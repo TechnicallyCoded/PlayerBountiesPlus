@@ -1,0 +1,15 @@
+name: PlayerBountiesPlus
+version: '${project.version}'
+main: com.tcoded.playerbountiesplus.PlayerBountiesPlus
+api-version: 1.19
+authors: [ TechnicallyCoded ]
+description: Claim bounties only if you are not on the same clan
+website: https://tcoded.com
+
+commands:
+  bounty:
+    permission: playerbountiesplus.command.bounty
+
+permissions:
+  playerbountiesplus.command.bounty:
+    default: true
