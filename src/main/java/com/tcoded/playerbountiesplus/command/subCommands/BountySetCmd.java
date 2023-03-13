@@ -1,6 +1,7 @@
 package com.tcoded.playerbountiesplus.command.subCommands;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import com.tcoded.playerbountiesplus.models.Bounty;
 import com.tcoded.playerbountiesplus.utils.BountiesStorageUtils;
 import com.tcoded.playerbountiesplus.utils.ColorUtils;
 import org.bukkit.Bukkit;
@@ -32,11 +33,13 @@ public class BountySetCmd {
                 }
                 boolean allowed = PlayerBountiesPlus.getPlugin().getVaultHook().takeMoney(player, amount);
                 if (allowed){
-                    if (bountiesStorageUtils.findBountyByOnlineTarget(onlineTarget).getBountyValue() >= configFile.getInt("bounty.max-bounty-value")){
-                        player.sendMessage(ColorUtils.translateColorCodes("&cThat player already has the maximum allowed bounty set!"));
-                        return true;
+                    Bounty bounty = bountiesStorageUtils.findBountyByOnlineTarget(onlineTarget);
+                    if (bounty != null){
+                        if (bountiesStorageUtils.findBountyByOnlineTarget(onlineTarget).getBountyValue() >= configFile.getInt("bounty.max-bounty-value")){
+                            player.sendMessage(ColorUtils.translateColorCodes("&cThat player already has the maximum allowed bounty set!"));
+                            return true;
+                        }
                     }
-
                     if (!bountiesStorageUtils.hasExistingBounty(onlineTarget)){
                         if (bountiesStorageUtils.createOnlineBounty(onlineTarget, player, amount) != null){
                             player.sendMessage(ColorUtils.translateColorCodes("&aYou placed a bounty of &e&l" + amount + " &aon &e&l" + targetName + "'s &ahead!"));
