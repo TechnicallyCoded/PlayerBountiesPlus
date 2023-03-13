@@ -1,4 +1,4 @@
-package com.tcoded.playerbountiesplus.hook.clan;
+package com.tcoded.playerbountiesplus.hooks.clan;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.entity.Player;

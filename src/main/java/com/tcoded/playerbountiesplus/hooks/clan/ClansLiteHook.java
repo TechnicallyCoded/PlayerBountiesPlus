@@ -1,10 +1,9 @@
-package com.tcoded.playerbountiesplus.hook.clan;
+package com.tcoded.playerbountiesplus.hooks.clan;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.Nullable;
-import xyz.gamlin.clans.Clans;
 import xyz.gamlin.clans.utils.ClansStorageUtil;
 
 public class ClansLiteHook extends AbstractClanHook {

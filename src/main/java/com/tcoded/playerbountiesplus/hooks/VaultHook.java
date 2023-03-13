@@ -1,12 +1,9 @@
-package com.tcoded.playerbountiesplus.hook;
+package com.tcoded.playerbountiesplus.hooks;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
-
-import java.util.UUID;
 
 public class VaultHook {
 

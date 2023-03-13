@@ -1,85 +1,71 @@
 package com.tcoded.playerbountiesplus.command;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import org.bukkit.ChatColor;
+import com.tcoded.playerbountiesplus.command.subCommands.BountyCheckCmd;
+import com.tcoded.playerbountiesplus.command.subCommands.BountySetCmd;
+import com.tcoded.playerbountiesplus.command.subCommands.BountyTopCmd;
+import com.tcoded.playerbountiesplus.utils.ColorUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.logging.Logger;
 
-public class BountyCommand implements CommandExecutor, TabCompleter {
+public class BountyCommand implements CommandExecutor {
 
-    private PlayerBountiesPlus plugin;
-
-    public BountyCommand(PlayerBountiesPlus plugin) {
-        this.plugin = plugin;
-    }
+    Logger logger = PlayerBountiesPlus.getPlugin().getLogger();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String cmdName, String[] args) {
 
-        if (args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "You need to specify an action! /bounty <set/top/check>");
+        if (sender instanceof Player){
+            Player player = (Player) sender;
+            if (args.length < 1) {
+                sender.sendMessage(ColorUtils.translateColorCodes("&6Bounty Commands Usage: &3" +
+                        "\n/bounty set <player> <amount>" +
+                        "\n/bounty check <player>" +
+                        "\n/bounty top"));
+                return true;
+            }
+
+            String action = args[0].toLowerCase();
+
+            switch (action) {
+                case "set":
+                    if (args.length == 3){
+                        if (args[2] != null){
+                            int amount = Integer.parseInt(args[2]);
+                            return new BountySetCmd().handleCmd(sender,args, amount);
+                        }else {
+                            player.sendMessage(ColorUtils.translateColorCodes("&6PlayerBountiesPlus: &3/bounty set <player> <amount>"));
+                            return true;
+                        }
+                    }else {
+                        player.sendMessage(ColorUtils.translateColorCodes("&6PlayerBountiesPlus: &3/bounty set <player> <amount>"));
+                        return true;
+                    }
+                case "check":
+                    if (args.length == 2){
+                        if (args[1] != null){
+                            return new BountyCheckCmd().handleCmd(sender, args);
+                        }else {
+                            player.sendMessage(ColorUtils.translateColorCodes("&6PlayerBountiesPlus: &3/bounty check <player>"));
+                            return true;
+                        }
+                    }else {
+                        player.sendMessage(ColorUtils.translateColorCodes("&6PlayerBountiesPlus: &3/bounty check <player>"));
+                        return true;
+                    }
+                case "top":
+                    return new BountyTopCmd().handleCmd(sender);
+                default:
+                    player.sendMessage(ColorUtils.translateColorCodes("&cSorry, that command is not recognised.\n&cPlease use &3/bounty"));
+            }
+        }else {
+            logger.warning(ColorUtils.translateColorCodes("&cSorry, that command can only be used in game."));
             return true;
         }
-
-        String action = args[0].toLowerCase();
-
-        switch (action) {
-            case "set":
-                return BountySetCmd.handleCmd(plugin, sender, cmd, cmdName, args);
-            case "top":
-                return BountyTopCmd.handleCmd(plugin, sender, cmd, cmdName, args);
-            case "check":
-                return BountyCheckCmd.handleCmd(plugin, sender, cmd, cmdName, args);
-            default:
-                sender.sendMessage(ChatColor.RED + "That's not a valid action!");
-        }
-
         return true;
-    }
-
-
-    @Nullable
-    @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        @Nullable List<String> options = new ArrayList<>();
-
-        if (args.length < 2) {
-            String arg0 = args[0].toLowerCase();
-            String[] actions = {"set", "top", "check"};
-            for (String action : actions) {
-                if (action.startsWith(arg0)) {
-                    options.add(action);
-                }
-            }
-        }
-        else if (args.length == 2) {
-            String arg0 = args[0].toLowerCase();
-            String arg1 = args[1].toLowerCase();
-            if (arg0.equals("set") || arg0.equals("check")) {
-                this.plugin.getServer().getOnlinePlayers().stream()
-                        .map(Player::getName)
-                        .map(String::toLowerCase)
-                        .filter(name -> name.startsWith(arg1))
-                        .forEach(options::add);
-            }
-        }
-        else if (args.length == 3) {
-            String arg0 = args[0].toLowerCase();
-            String arg2 = args[2].toLowerCase();
-            if (arg0.equals("set")) {
-                if (arg2.equals("")) options.add("<amount>");
-            }
-        }
-
-        return options;
     }
 }

@@ -6,19 +6,19 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-ALPHA-01</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
 
     <description>Claim bounties only if you are not on the same clan</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>https://tcoded.com</url>
 
     <build>
+        <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -86,11 +86,13 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>23.0.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.Loving11ish</groupId>
             <artifactId>ClansLite</artifactId>
-            <version>v1.3.6</version>
+            <version>v1.3.7</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

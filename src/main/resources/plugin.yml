@@ -1,13 +1,16 @@
 name: PlayerBountiesPlus
 version: '${project.version}'
 main: com.tcoded.playerbountiesplus.PlayerBountiesPlus
-api-version: 1.19
-authors: [ TechnicallyCoded ]
+api-version: 1.13
+authors: [ Loving11ish, TechnicallyCoded ]
+softdepend: [ Vault, ClansLite ]
 description: Claim bounties only if you are not on the same clan
 website: https://tcoded.com
 
 commands:
   bounty:
+    usage: "/bounty [set|check|top]"
+    description: "The main command for the plugin."
     permission: playerbountiesplus.command.bounty
 
 permissions:
