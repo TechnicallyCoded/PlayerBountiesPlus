@@ -15,19 +15,23 @@ public class BountyTopCmd {
         Set<Map.Entry<UUID, Integer>> bountiesSet = plugin.getBounties().entrySet();
         List<Map.Entry<UUID, Integer>> bounties = new ArrayList<>(bountiesSet);
         
-        bounties.sort(Comparator.comparingInt(Map.Entry::getValue));
+        bounties.sort((a, b) -> b.getValue() - a.getValue());
 
         StringBuilder strb = new StringBuilder();
         strb.append(ChatColor.YELLOW);
         strb.append("Top 10 bounties:\n");
-        if (bounties.size() > 0) {
-            for (int i = 0; i < 10; i++) {
+
+        int bountiesSize = bounties.size();
+        int maxInList = Math.min(10, bountiesSize);
+
+        if (bountiesSize > 0) {
+            for (int i = 0; i < maxInList; i++) {
                 strb.append(ChatColor.GRAY);
                 strb.append(" - ");
                 Map.Entry<UUID, Integer> entry = bounties.get(i);
                 strb.append(plugin.getServer().getOfflinePlayer(entry.getKey()).getName());
                 strb.append(": ");
-                strb.append(entry.getKey());
+                strb.append(entry.getValue());
                 strb.append('\n');
             }
         }
@@ -37,7 +41,7 @@ public class BountyTopCmd {
         }
 
         String message = strb.toString();
-        message = message.substring(0, message.length() - 2); // remove \n
+        message = message.substring(0, message.length() - 1); // remove \n
         sender.sendMessage(message);
         
         return true;

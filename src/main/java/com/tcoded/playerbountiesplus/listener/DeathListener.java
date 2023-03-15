@@ -8,6 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class DeathListener implements Listener {
 
     private PlayerBountiesPlus plugin;
@@ -22,10 +25,13 @@ public class DeathListener implements Listener {
         Player killer = victim.getKiller();
 
         if (killer != null) {
-            Integer bounty = this.plugin.getBounties().get(victim.getUniqueId());
+            HashMap<UUID, Integer> bounties = this.plugin.getBounties();
+            UUID victimId = victim.getUniqueId();
+            Integer bounty = bounties.get(victimId);
 
             // Bounty check
             if (bounty == null || bounty == 0) {
+                System.out.println("debug: no bounty");
                 return;
             }
 
@@ -41,6 +47,10 @@ public class DeathListener implements Listener {
             this.plugin.getVaultHook().addMoney(killer, bounty);
             this.plugin.getServer().broadcastMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD +
                     String.format("%s claimed the bounty that was placed on %s worth %s", killer.getName(), victim.getName(), bounty));
+
+            // Remove bounty
+            bounties.remove(victimId);
+            this.plugin.saveBounties();
         }
     }
 

@@ -6,9 +6,14 @@ authors: [ TechnicallyCoded ]
 description: Claim bounties only if you are not on the same clan
 website: https://tcoded.com
 
+depend:
+  - Vault
+  - ClansLite
+
 commands:
   bounty:
     permission: playerbountiesplus.command.bounty
+    aliases: [bounties]
 
 permissions:
   playerbountiesplus.command.bounty:

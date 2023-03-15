@@ -67,8 +67,7 @@ public class BountyCommand implements CommandExecutor, TabCompleter {
             if (arg0.equals("set") || arg0.equals("check")) {
                 this.plugin.getServer().getOnlinePlayers().stream()
                         .map(Player::getName)
-                        .map(String::toLowerCase)
-                        .filter(name -> name.startsWith(arg1))
+                        .filter(name -> name.toLowerCase().startsWith(arg1))
                         .forEach(options::add);
             }
         }

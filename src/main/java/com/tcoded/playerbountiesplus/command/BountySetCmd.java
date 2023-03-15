@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class BountySetCmd {
@@ -45,14 +46,18 @@ public class BountySetCmd {
 
         UUID playerUUID = target.getUniqueId();
 
-        plugin.getBounties().put(playerUUID, amount);
+        HashMap<UUID, Integer> bounties = plugin.getBounties();
+        Integer bountyAlreadyPresent = bounties.getOrDefault(playerUUID, 0);
+        int totalBounty = amount + bountyAlreadyPresent;
+        bounties.put(playerUUID, totalBounty);
 
         // Confirmation
         sender.sendMessage(ChatColor.GREEN + String.format("You placed a bounty of %s on %s's head!", amount, target.getName()));
 
         // Announce
+        String extra = bountyAlreadyPresent == 0 ? "" : " (Total: " + totalBounty + ")";
         plugin.getServer().broadcastMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD +
-                String.format("\nA bounty of %s was placed on %s's head by %s!\n", amount, target.getName(), sender.getName()));
+                String.format("\nA bounty of %s was placed on %s's head by %s!%s\n", amount, target.getName(), sender.getName(), extra));
 
         plugin.saveBounties();
 

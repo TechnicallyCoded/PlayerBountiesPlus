@@ -86,11 +86,13 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>23.0.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.Loving11ish</groupId>
             <artifactId>ClansLite</artifactId>
             <version>v1.3.6</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

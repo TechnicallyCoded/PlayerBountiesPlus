@@ -28,13 +28,16 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // Init
+        this.bounties = new HashMap<>();
+
         // Config
         saveDefaultConfig();
 
         // Bounties file
         String bountiesFileName = "bounties.yml";
-        bountiesFile = new File(bountiesFileName);
-        this.saveResource(bountiesFileName, false);
+        bountiesFile = new File(this.getDataFolder(), bountiesFileName);
+        if (!bountiesFile.exists()) this.saveResource(bountiesFileName, false);
         bountiesConfig = YamlConfiguration.loadConfiguration(bountiesFile);
 
         // Load bounties
@@ -49,8 +52,16 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
         // Hooks
         this.vault = new VaultHook(this);
-        this.vault.init();
+        boolean ecoPresent = this.vault.init();
+        if (!ecoPresent) {
+            getLogger().severe("No economy is present! Aborting startup!");
+            return;
+        }
         this.clanHook = AbstractClanHook.findClanHook(this);
+        if (this.clanHook == null) {
+            getLogger().severe("There is no supported clans plugin on the server!");
+            return;
+        }
 
         // Commands
         PluginCommand bountyCmd = this.getCommand("bounty");
