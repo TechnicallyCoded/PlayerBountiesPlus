@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import java.util.UUID;
 
 public class BountyCheckCmd {
+
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String cmdName, String[] args) {
         if (args.length < 2) {
             sender.sendMessage(ChatColor.RED + "You need to specify a player! /bounty check <player>");
@@ -26,7 +27,7 @@ public class BountyCheckCmd {
 
         UUID playerUUID = target.getUniqueId();
 
-        Integer amount = plugin.getBounties().get(playerUUID);
+        Integer amount = plugin.getBountyDataManager().getBounties().get(playerUUID);
 
         if (amount != null && amount > 0) {
             // Confirmation

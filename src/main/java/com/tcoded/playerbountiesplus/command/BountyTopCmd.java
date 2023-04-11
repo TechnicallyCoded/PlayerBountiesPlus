@@ -1,7 +1,6 @@
 package com.tcoded.playerbountiesplus.command;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import net.milkbowl.vault.chat.Chat;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,7 +11,7 @@ public class BountyTopCmd {
 
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String cmdName, String[] args) {
 
-        Set<Map.Entry<UUID, Integer>> bountiesSet = plugin.getBounties().entrySet();
+        Set<Map.Entry<UUID, Integer>> bountiesSet = plugin.getBountyDataManager().getBounties().entrySet();
         List<Map.Entry<UUID, Integer>> bounties = new ArrayList<>(bountiesSet);
         
         bounties.sort((a, b) -> b.getValue() - a.getValue());

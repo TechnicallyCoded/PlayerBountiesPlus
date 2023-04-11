@@ -11,6 +11,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DeathListener implements Listener {
 
@@ -26,7 +27,7 @@ public class DeathListener implements Listener {
         Player killer = victim.getKiller();
 
         if (killer != null) {
-            HashMap<UUID, Integer> bounties = this.plugin.getBounties();
+            ConcurrentHashMap<UUID, Integer> bounties = this.plugin.getBountyDataManager().getBounties();
             UUID victimId = victim.getUniqueId();
             Integer bounty = bounties.get(victimId);
 
@@ -51,7 +52,7 @@ public class DeathListener implements Listener {
 
             // Remove bounty
             bounties.remove(victimId);
-            this.plugin.saveBounties();
+            this.plugin.getBountyDataManager().saveBountiesAsync();
         }
     }
 

@@ -1,54 +1,38 @@
 package com.tcoded.playerbountiesplus;
 
+import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.hook.VaultHook;
 import com.tcoded.playerbountiesplus.hook.clan.AbstractClanHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
+import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.PluginCommand;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
 public final class PlayerBountiesPlus extends JavaPlugin {
 
-    private File bountiesFile;
-    private FileConfiguration bountiesConfig;
+    // Utils
+    private FoliaLib foliaLib;
 
-    private HashMap<UUID, Integer> bounties;
+    // Managers
+    private BountyDataManager bountyDataManager;
+
+    // Hooks
     private VaultHook vault;
     private AbstractClanHook clanHook;
 
     @Override
     public void onEnable() {
-        // Init
-        this.bounties = new HashMap<>();
+        // Utils
+        this.foliaLib = new FoliaLib(this);
 
         // Config
         saveDefaultConfig();
 
-        // Bounties file
-        String bountiesFileName = "bounties.yml";
-        bountiesFile = new File(this.getDataFolder(), bountiesFileName);
-        if (!bountiesFile.exists()) this.saveResource(bountiesFileName, false);
-        bountiesConfig = YamlConfiguration.loadConfiguration(bountiesFile);
-
-        // Load bounties
-        Set<String> keys = bountiesConfig.getKeys(false);
-        for (String key: keys) {
-            try {
-                this.bounties.put(UUID.fromString(key), bountiesConfig.getInt(key));
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
+        // Managers
+        this.bountyDataManager = new BountyDataManager(this);
+        this.bountyDataManager.init();
 
         // Hooks
         this.vault = new VaultHook(this);
@@ -78,35 +62,19 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         HandlerList.unregisterAll(this);
     }
 
-    public HashMap<UUID, Integer> getBounties() {
-        return this.bounties;
-    }
-
-    public void saveBounties() {
-        // Clear existing
-        Set<String> keys = bountiesConfig.getKeys(false);
-        for (String key: keys) {
-            bountiesConfig.set(key, null);
-        }
-
-        // Write changes
-        for (Map.Entry<UUID, Integer> entry : this.bounties.entrySet()) {
-            this.bountiesConfig.set(entry.getKey().toString(), entry.getValue());
-        }
-
-        // Save to file
-        try {
-            this.bountiesConfig.save(this.bountiesFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public VaultHook getVaultHook() {
         return this.vault;
     }
 
     public AbstractClanHook getClanHook() {
         return clanHook;
+    }
+
+    public BountyDataManager getBountyDataManager() {
+        return bountyDataManager;
+    }
+
+    public FoliaLib getFoliaLib() {
+        return this.foliaLib;
     }
 }
