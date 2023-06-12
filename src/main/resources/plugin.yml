@@ -9,7 +9,9 @@ folia-supported: true
 
 depend:
   - Vault
+softdepend:
   - ClansLite
+  - Parties
 
 commands:
   bounty:

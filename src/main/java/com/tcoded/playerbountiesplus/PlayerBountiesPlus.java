@@ -3,7 +3,7 @@ package com.tcoded.playerbountiesplus;
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.hook.VaultHook;
-import com.tcoded.playerbountiesplus.hook.clan.AbstractClanHook;
+import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.PluginCommand;
@@ -20,7 +20,7 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
     // Hooks
     private VaultHook vault;
-    private AbstractClanHook clanHook;
+    private AbstractTeamHook clanHook;
 
     @Override
     public void onEnable() {
@@ -41,10 +41,9 @@ public final class PlayerBountiesPlus extends JavaPlugin {
             getLogger().severe("No economy is present! Aborting startup!");
             return;
         }
-        this.clanHook = AbstractClanHook.findClanHook(this);
+        this.clanHook = AbstractTeamHook.findTeamHook(this);
         if (this.clanHook == null) {
-            getLogger().severe("There is no supported clans plugin on the server!");
-            return;
+            getLogger().warning("There is no supported team/clan/party plugin on the server! Feel free to request support for the plugin you use on GitHub or Discord!");
         }
 
         // Commands
@@ -66,7 +65,7 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         return this.vault;
     }
 
-    public AbstractClanHook getClanHook() {
+    public AbstractTeamHook getTeamHook() {
         return clanHook;
     }
 

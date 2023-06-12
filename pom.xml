@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -79,6 +79,10 @@
             <id>devmart-other</id>
             <url>https://nexuslite.gcnt.net/repo/other/</url>
         </repository>
+        <repository>
+            <id>devmart-public</id>
+            <url>https://nexuslite.gcnt.net/repos/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -110,6 +114,13 @@
             <groupId>com.tcoded</groupId>
             <artifactId>FoliaLib</artifactId>
             <version>0.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alessiodp.parties</groupId>
+            <artifactId>parties-api</artifactId>
+            <version>3.2.9</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/parties-api-3.2.9.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
