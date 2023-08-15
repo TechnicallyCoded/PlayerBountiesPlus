@@ -38,14 +38,18 @@ public class DeathListener implements Listener {
             // Clan check
             AbstractTeamHook teamHook = this.plugin.getTeamHook();
             if (teamHook != null && teamHook.isFriendly(killer, victim)) {
-                killer.sendMessage(ChatColor.GREEN + "The player you killed has an active bounty but you are in the same clan as they are!");
+                killer.sendMessage(plugin.getLang().getColored("death.same-team"));
                 return;
             }
 
             // Apply rewards!
             this.plugin.getVaultHook().addMoney(killer, bounty);
-            this.plugin.getServer().broadcastMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD +
-                    String.format("%s claimed the bounty that was placed on %s worth %s", killer.getName(), victim.getName(), bounty));
+            this.plugin.getServer().broadcastMessage(
+                    plugin.getLang().getColored("death.announce-claimed")
+                            .replace("{killer}", killer.getName())
+                            .replace("{victim}", victim.getName())
+                            .replace("{bounty}", bounty.toString())
+            );
 
             // Remove bounty
             bounties.remove(victimId);

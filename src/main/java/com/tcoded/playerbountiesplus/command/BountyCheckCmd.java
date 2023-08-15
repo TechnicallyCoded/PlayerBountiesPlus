@@ -12,7 +12,7 @@ public class BountyCheckCmd {
 
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String cmdName, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "You need to specify a player! /bounty check <player>");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.check.no-player-specified"));
             return true;
         }
 
@@ -21,7 +21,7 @@ public class BountyCheckCmd {
         Player target = plugin.getServer().getPlayerExact(playerNameArg);
 
         if (target == null) {
-            sender.sendMessage(ChatColor.RED + "That player is not online or doesn't exist!");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.check.player-not-found"));
             return true;
         }
 
@@ -31,9 +31,16 @@ public class BountyCheckCmd {
 
         if (amount != null && amount > 0) {
             // Confirmation
-            sender.sendMessage(ChatColor.GREEN + String.format("There is a bounty worth %s on %s's head!", amount, target.getName()));
+            sender.sendMessage(
+                    plugin.getLang().getColored("command.bounty.check.bounty-found")
+                            .replace("{target}", target.getName())
+                            .replace("{bounty}", amount.toString())
+            );
         } else {
-            sender.sendMessage(ChatColor.RED + String.format("There is no bounty on %s's head!", target.getName()));
+            sender.sendMessage(
+                    plugin.getLang().getColored("command.bounty.check.no-bounty")
+                            .replace("{target}", target.getName())
+            );
         }
 
         return true;

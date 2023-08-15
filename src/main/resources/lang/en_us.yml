@@ -1,0 +1,21 @@
+death:
+  same-team: "&aThe player you killed has an active bounty but you are in the same team as they are!"
+  announce-claimed: "&4&l{killer} claimed the bounty that was placed on {victim} worth {bounty}"
+
+command:
+  bounty:
+    no-action: "&cYou need to specify an action! /bounty <set/top/check>"
+    invalid-action: "&cThat's not a valid action!"
+    set:
+      missing-args: "&cYou need to specify a player and an amount! /bounty set <player> <amount>"
+      amount-nan: "&cThat's not a valid number!"
+      player-not-found: "&cThat player is not online or doesn't exist!"
+      not-enough-money: "&cYou don't have enough money for that!"
+      success: "&cYou placed a bounty of {bounty} on {target}'s head!"
+      announce: "\nA bounty of {bounty} was placed on {target}'s head by {player}!{extra}\n"
+      announce-extra: " (Total: {total})"
+    check:
+      no-player-specified: "&cYou need to specify a player! /bounty check <player>"
+      player-not-found: "&cThat player is not online or doesn't exist!"
+      no-bounty: "&cThere is no bounty on {target}'s head!"
+      bounty-found: "&aThere is a bounty worth {bounty} on {target}'s head!"

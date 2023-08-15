@@ -26,7 +26,7 @@ public class BountyCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command cmd, String cmdName, String[] args) {
 
         if (args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "You need to specify an action! /bounty <set/top/check>");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.no-action"));
             return true;
         }
 
@@ -40,7 +40,7 @@ public class BountyCommand implements CommandExecutor, TabCompleter {
             case "check":
                 return BountyCheckCmd.handleCmd(plugin, sender, cmd, cmdName, args);
             default:
-                sender.sendMessage(ChatColor.RED + "That's not a valid action!");
+                sender.sendMessage(plugin.getLang().getColored("command.bounty.invalid-action"));
         }
 
         return true;

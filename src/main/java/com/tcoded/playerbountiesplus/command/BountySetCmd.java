@@ -14,7 +14,7 @@ public class BountySetCmd {
 
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String cmdName, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ChatColor.RED + "You need to specify a player and an amount! /bounty set <player> <amount>");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.missing-args"));
             return true;
         }
 
@@ -23,14 +23,14 @@ public class BountySetCmd {
         try {
             amount = Integer.parseInt(args[2]);
         } catch (NumberFormatException ex) {
-            sender.sendMessage("That's not a valid number!");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.amount-nan"));
             return true;
         }
 
         Player target = plugin.getServer().getPlayerExact(playerNameArg);
 
         if (target == null) {
-            sender.sendMessage(ChatColor.RED + "That player is not online or doesn't exist!");
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.player-not-found"));
             return true;
         }
 
@@ -40,7 +40,7 @@ public class BountySetCmd {
             boolean allowed = plugin.getVaultHook().takeMoney(player, amount);
 
             if (!allowed) {
-                sender.sendMessage(ChatColor.RED + "You don't have enough money for that!");
+                sender.sendMessage(plugin.getLang().getColored("command.bounty.set.not-enough-money"));
                 return true;
             }
         }
@@ -53,12 +53,28 @@ public class BountySetCmd {
         bounties.put(playerUUID, totalBounty);
 
         // Confirmation
-        sender.sendMessage(ChatColor.GREEN + String.format("You placed a bounty of %s on %s's head!", amount, target.getName()));
+//        sender.sendMessage(ChatColor.GREEN + String.format("You placed a bounty of %s on %s's head!", amount, target.getName()));
+        sender.sendMessage(
+                plugin.getLang().getColored("command.bounty.set.success")
+                        .replace("{bounty}", String.valueOf(amount))
+                        .replace("{target}", target.getName())
+        );
 
         // Announce
-        String extra = bountyAlreadyPresent == 0 ? "" : " (Total: " + totalBounty + ")";
-        plugin.getServer().broadcastMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD +
-                String.format("\nA bounty of %s was placed on %s's head by %s!%s\n", amount, target.getName(), sender.getName(), extra));
+        String extra;
+        if (bountyAlreadyPresent == 0) extra = "";
+        else {
+            extra = plugin.getLang().getColored("command.bounty.set.announce-extra")
+                    .replace("{total}", String.valueOf(totalBounty));
+        }
+
+        plugin.getServer().broadcastMessage(
+                plugin.getLang().getColored("command.bounty.set.announce")
+                        .replace("{bounty}", String.valueOf(amount))
+                        .replace("{target}", target.getName())
+                        .replace("{player}", sender.getName())
+                        .replace("{extra}", extra)
+        );
 
         plugin.getBountyDataManager().saveBountiesAsync();
 

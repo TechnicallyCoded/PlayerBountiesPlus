@@ -6,14 +6,19 @@ import com.tcoded.playerbountiesplus.hook.VaultHook;
 import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
+import com.tcoded.playerbountiesplus.util.LangUtil;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.UUID;
 
 public final class PlayerBountiesPlus extends JavaPlugin {
 
     // Utils
     private FoliaLib foliaLib;
+    private LangUtil langUtil;
 
     // Managers
     private BountyDataManager bountyDataManager;
@@ -24,11 +29,13 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Utils
-        this.foliaLib = new FoliaLib(this);
-
         // Config
         saveDefaultConfig();
+        FileConfiguration config = this.getConfig();
+
+        // Utils
+        this.foliaLib = new FoliaLib(this);
+        this.langUtil = new LangUtil(this, config.getString("lang", "en_us").toLowerCase());
 
         // Managers
         this.bountyDataManager = new BountyDataManager(this);
@@ -75,5 +82,9 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
     public FoliaLib getFoliaLib() {
         return this.foliaLib;
+    }
+
+    public LangUtil getLang() {
+        return this.langUtil;
     }
 }
