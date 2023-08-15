@@ -1,5 +1,6 @@
 package com.tcoded.playerbountiesplus.util;
 
+import com.tcoded.legacycolorcodeparser.LegacyColorCodeParser;
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,7 +35,9 @@ public class LangUtil {
     }
 
     public String getColored(String key) {
-        return ChatColor.translateAlternateColorCodes('&', this.get(key));
+        String text = this.get(key);
+        text = LegacyColorCodeParser.convertHexToLegacy('&', text);
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
 }

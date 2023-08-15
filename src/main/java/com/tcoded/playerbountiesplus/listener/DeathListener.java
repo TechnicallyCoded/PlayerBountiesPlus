@@ -42,14 +42,32 @@ public class DeathListener implements Listener {
                 return;
             }
 
-            // Apply rewards!
-            this.plugin.getVaultHook().addMoney(killer, bounty);
-            this.plugin.getServer().broadcastMessage(
-                    plugin.getLang().getColored("death.announce-claimed")
-                            .replace("{killer}", killer.getName())
-                            .replace("{victim}", victim.getName())
-                            .replace("{bounty}", bounty.toString())
-            );
+            // Give reward!
+            if (plugin.getConfig().getBoolean("bounty-claimable", true)) {
+                double claimMultiplier = plugin.getConfig().getDouble("bounty-claim-multiplier", 1.0);
+                double awardedAmount = bounty * claimMultiplier;
+
+                if (awardedAmount > 0) {
+                    this.plugin.getVaultHook().addMoney(killer, awardedAmount);
+                } else if (awardedAmount < 0) {
+                    this.plugin.getVaultHook().takeMoney(killer, Math.abs(awardedAmount));
+                }
+            }
+
+            // Optional - Take from victim as punishment
+            if (plugin.getConfig().getBoolean("bounty-take-from-victim", false)) {
+                this.plugin.getVaultHook().takeMoney(killer, bounty, true);
+            }
+
+            // Announce Reward
+            if (plugin.getConfig().getBoolean("bounty-claimed-announce", true)) {
+                this.plugin.getServer().broadcastMessage(
+                        plugin.getLang().getColored("death.announce-claimed")
+                                .replace("{killer}", killer.getName())
+                                .replace("{victim}", victim.getName())
+                                .replace("{bounty}", bounty.toString())
+                );
+            }
 
             // Remove bounty
             bounties.remove(victimId);

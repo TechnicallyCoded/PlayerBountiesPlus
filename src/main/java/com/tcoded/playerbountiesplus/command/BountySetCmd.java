@@ -34,6 +34,23 @@ public class BountySetCmd {
             return true;
         }
 
+        // Check limits
+        double minimum = plugin.getConfig().getDouble("bounty-minimum", 1.0);
+        if (amount < minimum) {
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.under-minimum")
+                    .replace("{minimum}", String.valueOf(minimum))
+            );
+            return true;
+        }
+
+        double maximum = plugin.getConfig().getDouble("bounty-maximum", 1000000.0);
+        if (amount > maximum) {
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.over-maximum")
+                    .replace("{maximum}", String.valueOf(minimum))
+            );
+            return true;
+        }
+
         // Check money
         if (sender instanceof Player) {
             Player player = (Player) sender;
@@ -45,15 +62,24 @@ public class BountySetCmd {
             }
         }
 
+        // Apply bounty multiplier
+        amount *= plugin.getConfig().getDouble("bounty-multiplier", 1.0);
+
+        // Sanity check final amount
+        if (amount <= 0) {
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.internal-invalid-value"));
+            return true;
+        }
+
         UUID playerUUID = target.getUniqueId();
 
+        // Calculate total bounty including previous bounties
         ConcurrentHashMap<UUID, Integer> bounties = plugin.getBountyDataManager().getBounties();
         Integer bountyAlreadyPresent = bounties.getOrDefault(playerUUID, 0);
         int totalBounty = amount + bountyAlreadyPresent;
         bounties.put(playerUUID, totalBounty);
 
         // Confirmation
-//        sender.sendMessage(ChatColor.GREEN + String.format("You placed a bounty of %s on %s's head!", amount, target.getName()));
         sender.sendMessage(
                 plugin.getLang().getColored("command.bounty.set.success")
                         .replace("{bounty}", String.valueOf(amount))
@@ -68,13 +94,15 @@ public class BountySetCmd {
                     .replace("{total}", String.valueOf(totalBounty));
         }
 
-        plugin.getServer().broadcastMessage(
-                plugin.getLang().getColored("command.bounty.set.announce")
-                        .replace("{bounty}", String.valueOf(amount))
-                        .replace("{target}", target.getName())
-                        .replace("{player}", sender.getName())
-                        .replace("{extra}", extra)
-        );
+        if (plugin.getConfig().getBoolean("bounty-placed-announce", true)) {
+            plugin.getServer().broadcastMessage(
+                    plugin.getLang().getColored("command.bounty.set.announce")
+                            .replace("{bounty}", String.valueOf(amount))
+                            .replace("{target}", target.getName())
+                            .replace("{player}", sender.getName())
+                            .replace("{extra}", extra)
+            );
+        }
 
         plugin.getBountyDataManager().saveBountiesAsync();
 

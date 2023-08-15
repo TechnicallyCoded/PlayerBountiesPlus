@@ -1,1 +1,25 @@
+# We currently only support English but please contribute your own translations :D
 lang: "en_us"
+
+# Add more money on the victim player than the command sender spends
+bounty-multiplier: 1.0
+
+# Minimum and maximum bounty amount - These values are checked BEFORE the multiplier is applied.
+bounty-minimum: 1.0
+bounty-maximum: 1000000.0
+
+# If we should give the bounty money to the killer
+bounty-claimable: true
+
+# Give more or less money to the killer
+bounty-claim-multiplier: 1.0
+
+# If we should announce that the bounty was claimed
+bounty-claimed-announce: true
+
+# If we should announce that the bounty was placed
+bounty-placed-announce: true
+
+# Should the bounty money be taken from the player who dies?
+# This can reduce same-team killing (or the use of alts) to claim the bounty from themselves
+bounty-take-from-victim: false

@@ -2,6 +2,7 @@ package com.tcoded.playerbountiesplus.hook;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -38,10 +39,13 @@ public class VaultHook {
     }
 
     public boolean takeMoney(Player player, double amount) {
-        double balance = this.eco.getBalance(player);
-        if (balance < amount) return false;
+        return this.takeMoney(player, amount, false);
+    }
 
-        this.eco.withdrawPlayer(player, amount);
-        return true;
+    public boolean takeMoney(Player player, double amount, boolean force) {
+        double balance = this.eco.getBalance(player);
+        if (balance < amount && !force) return false;
+
+        return this.eco.withdrawPlayer(player, amount).type == EconomyResponse.ResponseType.SUCCESS;
     }
 }

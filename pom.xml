@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -83,6 +83,10 @@
             <id>devmart-public</id>
             <url>https://nexuslite.gcnt.net/repos/public/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -121,6 +125,11 @@
             <version>3.2.9</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/parties-api-3.2.9.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lightlibs</groupId>
+            <artifactId>LegacyColorCodeParser</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 </project>
