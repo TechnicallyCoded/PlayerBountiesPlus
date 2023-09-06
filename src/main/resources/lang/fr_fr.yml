@@ -1,0 +1,34 @@
+death:
+  same-team: "&aLe joueur que vous avez tué a une prime sur sa tête mais vous êtes dans la même équipe!"
+  announce-claimed: "&4&l{killer} a gagné la prime de {victim} au prix de ${bounty}"
+
+command:
+  no-permission: "&cVous n'avez pas la permission d'utiliser cette commande!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aLes fichiers de configuration ont été mis à jour avec succès!"
+    version:
+      no-permission: "&7(Version non visible: Permission manquante)"
+  bounty:
+    no-action: "&cVous devez spécifier une action! /bounty <set/top/check>"
+    invalid-action: "&cCeci n'est pas une action valable!"
+    set:
+      missing-args: "&cVous devez spécifier un joueur et une action! /bounty set <player> <amount>"
+      amount-nan: "&cCeci n'est pas un nombre valable!"
+      player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas!"
+      under-minimum: "&cLa prime que vous avez entrée est trop petite. La prime minimum est {minimum}!"
+      over-maximum: "&cLa prime que avez entrée est trop grande. La prime maximum est {maximum}!"
+      not-enough-money: "&cVous n'avez pas assez d'argent pour cela!"
+      internal-invalid-value: "&cUne valeur non-valable a été atteinte pendant le traitement. Veuillez contacter un administrateur!"
+      success: "&cVous avez placé une prime de {bounty} sur la tête de {target}!"
+      announce: "\nUne prime de {bounty} a été placée sur la tête de {target} par {player}!{extra}\n"
+      announce-extra: " (Total: {total})"
+    check:
+      no-player-specified: "&cVous devez spécifier un joueur! /bounty check <player>"
+      player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas"
+      no-bounty: "&cIl n'y a pas de prime sur la tête de {target}!"
+      bounty-found: "&aIl y a une prime de {bounty} sur la tête de {target}!"
+    top:
+      top-10: "&eLes top 10 primes:"
+      no-bounties: "&r &cAucune prime n'a été placée!"

@@ -1,7 +1,6 @@
-package com.tcoded.playerbountiesplus.command;
+package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

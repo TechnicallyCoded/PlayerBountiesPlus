@@ -1,17 +1,24 @@
-# We currently only support English but please contribute your own translations :D
+# We currently only support a few languages, but please contribute your own translations!
+# To contribute new languages, please join our Discord server or open a pull request on GitHub!
+# You can find both of these links on the plugin download page: https://www.spigotmc.org/resources/player-bounties-plus.108637/
+#
+# Possible values:
+# en_us - English (US)
+# fr_fr - French (France)
 lang: "en_us"
 
 # Add more money on the victim player than the command sender spends
+# For example: /bounty set TechnicallyCoded 100 -> turns into a bounty of 200 while only taking 100 from the sender
 bounty-multiplier: 1.0
 
-# Minimum and maximum bounty amount - These values are checked BEFORE the multiplier is applied.
+# Minimum and maximum bounty amount - These values are checked BEFORE the multiplier above is applied.
 bounty-minimum: 1.0
 bounty-maximum: 1000000.0
 
 # If we should give the bounty money to the killer
 bounty-claimable: true
 
-# Give more or less money to the killer
+# Give more or less money to the killer. This value can be negative if you want to.
 bounty-claim-multiplier: 1.0
 
 # If we should announce that the bounty was claimed

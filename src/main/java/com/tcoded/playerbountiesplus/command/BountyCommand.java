@@ -1,7 +1,9 @@
 package com.tcoded.playerbountiesplus.command;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import org.bukkit.ChatColor;
+import com.tcoded.playerbountiesplus.command.bounty.BountyCheckCmd;
+import com.tcoded.playerbountiesplus.command.bounty.BountySetCmd;
+import com.tcoded.playerbountiesplus.command.bounty.BountyTopCmd;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class BountyCommand implements CommandExecutor, TabCompleter {
 

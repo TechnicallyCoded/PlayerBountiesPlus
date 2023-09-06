@@ -1,8 +1,15 @@
 death:
   same-team: "&aThe player you killed has an active bounty but you are in the same team as they are!"
-  announce-claimed: "&4&l{killer} claimed the bounty that was placed on {victim} worth {bounty}"
+  announce-claimed: "&4&l{killer} claimed {victim}'s bounty worth ${bounty}"
 
 command:
+  no-permission: "&cYou don't have the permission to use this command!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aSuccessfully reloaded the configuration files!"
+    version:
+      no-permission: "&7(Version not visible: Missing permission)"
   bounty:
     no-action: "&cYou need to specify an action! /bounty <set/top/check>"
     invalid-action: "&cThat's not a valid action!"
@@ -22,3 +29,6 @@ command:
       player-not-found: "&cThat player is not online or doesn't exist!"
       no-bounty: "&cThere is no bounty on {target}'s head!"
       bounty-found: "&aThere is a bounty worth {bounty} on {target}'s head!"
+    top:
+      top-10: "&eTop 10 bounties:"
+      no-bounties: "&r &cNo bounties were set!"

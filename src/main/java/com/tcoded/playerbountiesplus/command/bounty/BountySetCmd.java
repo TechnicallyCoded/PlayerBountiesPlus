@@ -1,12 +1,10 @@
-package com.tcoded.playerbountiesplus.command;
+package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -83,7 +81,9 @@ public class BountySetCmd {
         sender.sendMessage(
                 plugin.getLang().getColored("command.bounty.set.success")
                         .replace("{bounty}", String.valueOf(amount))
+                        .replace("{total}", String.valueOf(totalBounty))
                         .replace("{target}", target.getName())
+                        .replace("{player}", sender.getName())
         );
 
         // Announce

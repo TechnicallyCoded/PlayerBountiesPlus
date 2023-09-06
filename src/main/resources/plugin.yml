@@ -16,8 +16,16 @@ softdepend:
 commands:
   bounty:
     permission: playerbountiesplus.command.bounty
-    aliases: [bounties]
+    aliases: [bounties, prime, primes]
+  playerbountiesplusadmin:
+    aliases: [playerbountiesplus, pbpa, pbp]
 
 permissions:
   playerbountiesplus.command.bounty:
     default: true
+  playerbountiesplus.command.playerbountiesplus:
+    children:
+      playerbountiesplus.command.playerbountiesplus.version:
+        default: true
+      playerbountiesplus.command.playerbountiesplus.reload:
+        default: op

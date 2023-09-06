@@ -2,7 +2,6 @@ package com.tcoded.playerbountiesplus.listener;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -56,7 +55,7 @@ public class DeathListener implements Listener {
 
             // Optional - Take from victim as punishment
             if (plugin.getConfig().getBoolean("bounty-take-from-victim", false)) {
-                this.plugin.getVaultHook().takeMoney(killer, bounty, true);
+                this.plugin.getVaultHook().takeMoney(victim, bounty, true);
             }
 
             // Announce Reward

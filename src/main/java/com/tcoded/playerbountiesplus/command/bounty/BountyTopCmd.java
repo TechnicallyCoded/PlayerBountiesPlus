@@ -1,4 +1,4 @@
-package com.tcoded.playerbountiesplus.command;
+package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.ChatColor;
@@ -17,8 +17,7 @@ public class BountyTopCmd {
         bounties.sort((a, b) -> b.getValue() - a.getValue());
 
         StringBuilder strb = new StringBuilder();
-        strb.append(ChatColor.YELLOW);
-        strb.append("Top 10 bounties:\n");
+        strb.append(plugin.getLang().getColored("command.bounty.top.top-10") + "\n");
 
         int bountiesSize = bounties.size();
         int maxInList = Math.min(10, bountiesSize);
@@ -35,12 +34,11 @@ public class BountyTopCmd {
             }
         }
         else {
-            strb.append(ChatColor.RED);
-            strb.append(" No bounties were set!\n");
+            strb.append(plugin.getLang().getColored("command.bounty.top.no-bounties") + "\n");
         }
 
         String message = strb.toString();
-        message = message.substring(0, message.length() - 1); // remove \n
+        message = message.substring(0, message.length() - 1); // remove last \n
         sender.sendMessage(message);
         
         return true;

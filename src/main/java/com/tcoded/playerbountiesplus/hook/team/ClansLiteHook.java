@@ -9,12 +9,8 @@ import xyz.gamlin.clans.utils.ClansStorageUtil;
 
 public class ClansLiteHook extends AbstractTeamHook {
 
-    private PlayerBountiesPlus plugin;
-    private Plugin clansLitePlugin;
-
-    public ClansLiteHook(PlayerBountiesPlus plugin, Plugin clansLitePlugin) {
-        this.plugin = plugin;
-        this.clansLitePlugin = clansLitePlugin;
+    public ClansLiteHook(PlayerBountiesPlus plugin, Plugin teamPlugin) {
+        super(plugin, teamPlugin);
     }
 
     public @Nullable String getClanId(Player player) {

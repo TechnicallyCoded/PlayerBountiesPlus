@@ -7,10 +7,8 @@ import org.bukkit.plugin.Plugin;
 
 public class AlessioPartiesHook extends AbstractTeamHook {
 
-    private PlayerBountiesPlus plugin;
-
     public AlessioPartiesHook(PlayerBountiesPlus plugin, Plugin partiesPlugin) {
-        this.plugin = plugin;
+        super(plugin, partiesPlugin);
     }
 
     @Override
