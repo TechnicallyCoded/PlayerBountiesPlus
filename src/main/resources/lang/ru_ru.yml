@@ -1,0 +1,34 @@
+death:
+  same-team: "&aИгрок, которого вы убили, имеет активную награду, но вы находитесь в одной команде с ними!"
+  announce-claimed: "&4&l{killer} получил награду {victim} на сумму ${bounty}"
+
+command:
+  no-permission: "&cУ вас нет разрешения использовать эту команду!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aКонфигурационные файлы успешно перезагружены!"
+    version:
+      no-permission: "&7(Версия не видна: Отсутствует разрешение)"
+  bounty:
+    no-action: "&cВы должны указать действие! /bounty <set/top/check>"
+    invalid-action: "&cЭто недопустимое действие!"
+    set:
+      missing-args: "&cВы должны указать игрока и сумму! /bounty set <игрок> <сумма>"
+      amount-nan: "&cЭто не число!"
+      player-not-found: "&cЭтот игрок не в сети или не существует!"
+      under-minimum: "&cНаграда, которую вы установили, слишком низкая. Минимальная сумма награды составляет {minimum}!"
+      over-maximum: "&cНаграда, которую вы установили, слишком высокая. Максимальная сумма награды составляет {maximum}!"
+      not-enough-money: "&cУ вас недостаточно денег для этого!"
+      internal-invalid-value: "&cВо время внутренней обработки было получено недопустимое значение. Пожалуйста, сообщите об этом администратору!"
+      success: "&cВы установили награду в размере {bounty} на голову {target}!"
+      announce: "\nНа голову {target} была установлена награда в размере {bounty} игроком {player}!{extra}\n"
+      announce-extra: " (Всего: {total})"
+    check:
+      no-player-specified: "&cВы должны указать игрока! /bounty check <игрок>"
+      player-not-found: "&cЭтот игрок не в сети или не существует!"
+      no-bounty: "&cНа голове {target} нет награды!"
+      bounty-found: "&aНа голове {target} установлена награда в размере {bounty}!"
+    top:
+      top-10: "&eТоп 10 наград:"
+      no-bounties: "&r &cНаграды не установлены!"

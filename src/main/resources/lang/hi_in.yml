@@ -1,0 +1,34 @@
+death:
+  same-team: "&aवह खिलाड़ी जिसे आपने मार डाला है, उसके पास एक सक्रिय इनाम है, लेकिन आप उनकी टीम में हैं!"
+  announce-claimed: "&4&l{killer} ने {victim} के इनाम {bounty} को मांग लिया"
+
+command:
+  no-permission: "&cआपके पास इस कमांड का उपयोग करने की अनुमति नहीं है!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aकॉन्फ़िगरेशन फ़ाइलों को सफलतापूर्वक पुनः लोड किया गया!"
+    version:
+      no-permission: "&7(संस्करण दृश्यमान नहीं: अनुमति अनुपस्थित है)"
+  bounty:
+    no-action: "&cआपको क्रिया स्पष्ट करनी होगी! /bounty <set/top/check>"
+    invalid-action: "&cयह एक मान्य क्रिया नहीं है!"
+    set:
+      missing-args: "&cआपको एक खिलाड़ी और एक रकम निर्दिष्ट करनी होगी! /bounty set <player> <amount>"
+      amount-nan: "&cयह एक मान्य संख्या नहीं है!"
+      player-not-found: "&cवह खिलाड़ी ऑनलाइन नहीं है या मौजूद नहीं है!"
+      under-minimum: "&cआपने जो इनाम निर्धारित किया है, वह बहुत कम है। न्यूनतम इनाम राशि है {minimum}!"
+      over-maximum: "&cआपने जो इनाम निर्धारित किया है, वह बहुत अधिक है। अधिकतम इनाम राशि है {maximum}!"
+      not-enough-money: "&cइसके लिए आपके पास पर्याप्त धन नहीं है!"
+      internal-invalid-value: "&cआंतरिक प्रसंस्करण के दौरान एक अमान्य मूल्य प्राप्त हुआ है। कृपया इसे एक प्रशासक को रिपोर्ट करें!"
+      success: "&cआपने {target} के सिर पर {bounty} का इनाम रख दिया है!"
+      announce: "\n{player} ने {target} के सिर पर {bounty} का इनाम रखा है!{extra}\n"
+      announce-extra: " (कुल: {total})"
+    check:
+      no-player-specified: "&cआपको एक खिलाड़ी निर्दिष्ट करना होगा! /bounty check <player>"
+      player-not-found: "&cवह खिलाड़ी ऑनलाइन नहीं है या मौजूद नहीं है!"
+      no-bounty: "&c{target} के सिर पर कोई इनाम नहीं है!"
+      bounty-found: "&a{target} के सिर पर {bounty} का इनाम है!"
+    top:
+      top-10: "&eशीर्ष 10 इनाम:"
+      no-bounties: "&r &cकोई इनाम नहीं निर्धारित किए गए हैं!"

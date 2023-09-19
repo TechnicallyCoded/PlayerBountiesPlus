@@ -1,0 +1,34 @@
+death:
+  same-team: "&aEl jugador que mataste tiene una recompensa activa pero estás en el mismo equipo que él."
+  announce-claimed: "&4&l{killer} reclamó la recompensa de {victim} valorada en ${bounty}"
+
+command:
+  no-permission: "&cNo tienes permiso para usar este comando."
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aLos archivos de configuración se han recargado con éxito."
+    version:
+      no-permission: "&7(Versión no visible: Permiso faltante)"
+  bounty:
+    no-action: "&cDebes especificar una acción! /bounty <set/top/check>"
+    invalid-action: "&cEsa no es una acción válida."
+    set:
+      missing-args: "&cDebes especificar un jugador y una cantidad! /bounty set <player> <amount>"
+      amount-nan: "&cEso no es un número válido."
+      player-not-found: "&cEse jugador no está en línea o no existe."
+      under-minimum: "&cLa recompensa que estableciste es demasiado baja. La cantidad mínima de recompensa es {minimum}!"
+      over-maximum: "&cLa recompensa que estableciste es demasiado alta. La cantidad máxima de recompensa es {maximum}!"
+      not-enough-money: "&cNo tienes suficiente dinero para eso."
+      internal-invalid-value: "&cSe alcanzó un valor no válido durante el procesamiento interno. Por favor, reporta esto a un administrador."
+      success: "&cHas colocado una recompensa de {bounty} en la cabeza de {target}."
+      announce: "\nSe ha colocado una recompensa de {bounty} en la cabeza de {target} por {player}!{extra}\n"
+      announce-extra: " (Total: {total})"
+    check:
+      no-player-specified: "&cDebes especificar un jugador! /bounty check <player>"
+      player-not-found: "&cEse jugador no está en línea o no existe."
+      no-bounty: "&cNo hay una recompensa en la cabeza de {target}."
+      bounty-found: "&aHay una recompensa valorada en {bounty} en la cabeza de {target}."
+    top:
+      top-10: "&eLos 10 mejores recompensas:"
+      no-bounties: "&r &cNo se han establecido recompensas."
