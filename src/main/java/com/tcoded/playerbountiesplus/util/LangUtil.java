@@ -20,8 +20,15 @@ public class LangUtil {
     private final boolean customLang;
 
     public enum SupportedLang {
+        DE_DE,
+        EN_GB,
         EN_US,
-        FR_FR
+        EN_UWU,
+        ES_ES,
+        FR_FR,
+        HI_IN,
+        RU_RU,
+        ZH_CN,
         ;
 
         public static SupportedLang find(String name) {

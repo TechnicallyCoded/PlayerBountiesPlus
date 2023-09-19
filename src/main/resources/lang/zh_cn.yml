@@ -1,0 +1,34 @@
+death:
+  same-team: "&a你击杀的玩家有悬赏，但你与他们在同一队伍中！"
+  announce-claimed: "&4&l{killer} 已领取 {victim} 的悬赏，价值 ${bounty}"
+
+command:
+  no-permission: "&c你没有权限使用此命令！"
+  no-permission-detailed: "{no-permission-msg} &7（权限：{permission}）"
+  admin:
+    reload:
+      reloaded: "&a成功重新加载配置文件！"
+    version:
+      no-permission: "&7（无法查看版本：缺少权限）"
+  bounty:
+    no-action: "&c你需要指定一个操作！/bounty <set/top/check>"
+    invalid-action: "&c这不是一个有效的操作！"
+    set:
+      missing-args: "&c你需要指定玩家和金额！/bounty set <player> <amount>"
+      amount-nan: "&c这不是一个有效的数字！"
+      player-not-found: "&c该玩家不在线或不存在！"
+      under-minimum: "&c你设置的悬赏太低了。最低悬赏金额为 {minimum}！"
+      over-maximum: "&c你设置的悬赏太高了。最高悬赏金额为 {maximum}！"
+      not-enough-money: "&c你没有足够的钱！"
+      internal-invalid-value: "&c在内部处理过程中出现了无效的值。请向管理员报告此问题！"
+      success: "&c你在 {target} 的头上放置了一个悬赏，价值 {bounty}！"
+      announce: "\n{player} 放置了一个 {bounty} 的悬赏在 {target} 的头上！{extra}\n"
+      announce-extra: "（总计：{total}）"
+    check:
+      no-player-specified: "&c你需要指定一个玩家！/bounty check <player>"
+      player-not-found: "&c该玩家不在线或不存在！"
+      no-bounty: "&c{target} 的头上没有悬赏！"
+      bounty-found: "&a{target} 的头上有一个价值 {bounty} 的悬赏！"
+    top:
+      top-10: "&e前10名悬赏："
+      no-bounties: "&r &c没有设置悬赏！"

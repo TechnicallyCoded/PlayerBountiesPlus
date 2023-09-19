@@ -1,0 +1,34 @@
+death:
+  same-team: "&aDer Spieler, den du getötet hast, hat eine aktive Belohnung, aber du bist im selben Team wie er!"
+  announce-claimed: "&4&l{killer} hat die Belohnung von {victim} im Wert von ${bounty} beansprucht"
+
+command:
+  no-permission: "&cDu hast keine Berechtigung, diesen Befehl zu verwenden!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aDie Konfigurationsdateien wurden erfolgreich neu geladen!"
+    version:
+      no-permission: "&7(Version nicht sichtbar: Fehlende Berechtigung)"
+  bounty:
+    no-action: "&cDu musst eine Aktion angeben! /bounty <set/top/check>"
+    invalid-action: "&cDas ist keine gültige Aktion!"
+    set:
+      missing-args: "&cDu musst einen Spieler und einen Betrag angeben! /bounty set <Spieler> <Betrag>"
+      amount-nan: "&cDas ist keine gültige Zahl!"
+      player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+      under-minimum: "&cDie Belohnung, die du festgelegt hast, ist zu niedrig. Der Mindestbetrag für Belohnungen beträgt {minimum}!"
+      over-maximum: "&cDie Belohnung, die du festgelegt hast, ist zu hoch. Der maximale Belohnungsbetrag beträgt {maximum}!"
+      not-enough-money: "&cDu hast nicht genug Geld dafür!"
+      internal-invalid-value: "&cWährend der internen Verarbeitung wurde ein ungültiger Wert erreicht. Bitte melde dies einem Administrator!"
+      success: "&cDu hast eine Belohnung von {bounty} auf den Kopf von {target} gesetzt!"
+      announce: "\nEine Belohnung von {bounty} wurde von {player} auf den Kopf von {target} gesetzt!{extra}\n"
+      announce-extra: " (Gesamt: {total})"
+    check:
+      no-player-specified: "&cDu musst einen Spieler angeben! /bounty check <Spieler>"
+      player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+      no-bounty: "&cAuf dem Kopf von {target} gibt es keine Belohnung!"
+      bounty-found: "&aAuf dem Kopf von {target} gibt es eine Belohnung im Wert von {bounty}!"
+    top:
+      top-10: "&eDie besten 10 Belohnungen:"
+      no-bounties: "&r &cEs wurden keine Belohnungen festgelegt!"

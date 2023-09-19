@@ -1,0 +1,34 @@
+death:
+  same-team: "&aDa pwayer you kiwwed has an active bounty but you awe in da same team as they awe!"
+  announce-claimed: "&4&w{killer} cwaimed {victim}'s bounty wowth ${bounty}"
+
+command:
+  no-permission: "&cYou don't have da pewmission to use this command!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aSuccessfuwwy weawoaded da configuwation fiwes!"
+    version:
+      no-permission: "&7(Vewsion not visibwe: Missing pewmission)"
+  bounty:
+    no-action: "&cYou need to specify an action! /bounty <set/top/check>"
+    invalid-action: "&cThat's not a vawid action!"
+    set:
+      missing-args: "&cYou need to specify a pwayer and an amount! /bounty set <pwayer> <amount>"
+      amount-nan: "&cThat's not a vawid numbew!"
+      player-not-found: "&cThat pwayer is not onwine ow doesn't exist!"
+      under-minimum: "&cDa bounty you set is too wow. Da minimum bounty amount is {minimum}!"
+      over-maximum: "&cDa bounty you set is too high. Da maximum bounty amount is {maximum}!"
+      not-enough-money: "&cYou don't have enough money fow that!"
+      internal-invalid-value: "&cAn invawid vawue was weached duwing intewnaw pwocessing. Pwease wepowt this to an administwatow!"
+      success: "&cYou pwaced a bounty of {bounty} on {target}'s head!"
+      announce: "\nA bounty of {bounty} was pwaced on {target}'s head by {player}!{extra}\n"
+      announce-extra: " (Totaw: {total})"
+    check:
+      no-player-specified: "&cYou need to specify a pwayer! /bounty check <pwayer>"
+      player-not-found: "&cThat pwayer is not onwine ow doesn't exist!"
+      no-bounty: "&cDewe is no bounty on {target}'s head!"
+      bounty-found: "&aDewe is a bounty wowth {bounty} on {target}'s head!"
+    top:
+      top-10: "&eTop 10 bounties:"
+      no-bounties: "&w &cNo bounties wewe set!"
