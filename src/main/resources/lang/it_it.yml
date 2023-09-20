@@ -1,0 +1,34 @@
+death:
+  same-team: "&aIl giocatore che hai ucciso ha una taglia attiva, ma sei nella stessa squadra!"
+  announce-claimed: "&4&l{killer} ha reclamato la taglia di {victim} del valore di ${bounty}"
+
+command:
+  no-permission: "&cNon hai il permesso di utilizzare questo comando!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aHai ricaricato con successo i file di configurazione!"
+    version:
+      no-permission: "&7(Versione non visibile: Permesso mancante)"
+  bounty:
+    no-action: "&cDevi specificare un'azione! /bounty <set/top/check>"
+    invalid-action: "&cQuesta non è un'azione valida!"
+    set:
+      missing-args: "&cDevi specificare un giocatore e una quantità! /bounty set <giocatore> <quantità>"
+      amount-nan: "&cQuesto non è un numero valido!"
+      player-not-found: "&cQuesto giocatore non è online o non esiste!"
+      under-minimum: "&cLa taglia che hai impostato è troppo bassa. La quantità minima della taglia è {minimum}!"
+      over-maximum: "&cLa taglia che hai impostato è troppo alta. La quantità massima della taglia è {maximum}!"
+      not-enough-money: "&cNon hai abbastanza denaro per questo!"
+      internal-invalid-value: "&cÈ stato raggiunto un valore non valido durante l'elaborazione interna. Segnala questo a un amministratore!"
+      success: "&cHai messo una taglia di {bounty} sulla testa di {target}!"
+      announce: "\nUna taglia di {bounty} è stata posta sulla testa di {target} da {player}!{extra}\n"
+      announce-extra: " (Totale: {total})"
+    check:
+      no-player-specified: "&cDevi specificare un giocatore! /bounty check <giocatore>"
+      player-not-found: "&cQuesto giocatore non è online o non esiste!"
+      no-bounty: "&cNon c'è alcuna taglia sulla testa di {target}!"
+      bounty-found: "&aC'è una taglia del valore di {bounty} sulla testa di {target}!"
+    top:
+      top-10: "&eLe prime 10 taglie:"
+      no-bounties: "&r &cNessuna taglia è stata impostata!"

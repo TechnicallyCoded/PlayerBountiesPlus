@@ -27,7 +27,10 @@ public class LangUtil {
         ES_ES,
         FR_FR,
         HI_IN,
+        IT_IT,
+        NL_NL,
         RU_RU,
+        SE_SE,
         ZH_CN,
         ;
 

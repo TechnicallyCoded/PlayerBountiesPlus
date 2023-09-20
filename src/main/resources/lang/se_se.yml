@@ -1,0 +1,34 @@
+death:
+  same-team: "&aDen spelare du dödade har en aktiv prissumma, men du tillhör samma lag som de är!"
+  announce-claimed: "&4&l{killer} har tagit {victim}s prissumma värd {bounty} dollar"
+
+command:
+  no-permission: "&cDu har inte behörighet att använda detta kommando!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aKonfigurationsfilerna har laddats om framgångsrikt!"
+    version:
+      no-permission: "&7(Version ej synlig: Saknad behörighet)"
+  bounty:
+    no-action: "&cDu måste ange en åtgärd! /bounty <set/top/check>"
+    invalid-action: "&cDet är inte en giltig åtgärd!"
+    set:
+      missing-args: "&cDu måste ange en spelare och en summa! /bounty set <spelare> <summa>"
+      amount-nan: "&cDet är inte ett giltigt nummer!"
+      player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+      under-minimum: "&cPrissumman du angav är för låg. Minsta tillåtna prissumma är {minimum}!"
+      over-maximum: "&cPrissumman du angav är för hög. Högsta tillåtna prissumma är {maximum}!"
+      not-enough-money: "&cDu har inte tillräckligt med pengar för det!"
+      internal-invalid-value: "&cEtt ogiltigt värde nåddes under intern bearbetning. Vänligen rapportera detta till en administratör!"
+      success: "&cDu placerade en prissumma på {bounty} på {target}s huvud!"
+      announce: "\nEn prissumma på {bounty} har placerats på {target}s huvud av {player}!{extra}\n"
+      announce-extra: " (Totalt: {total})"
+    check:
+      no-player-specified: "&cDu måste ange en spelare! /bounty check <spelare>"
+      player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+      no-bounty: "&cDet finns ingen prissumma på {target}s huvud!"
+      bounty-found: "&aDet finns en prissumma värd {bounty} på {target}s huvud!"
+    top:
+      top-10: "&eTopp 10 prissummor:"
+      no-bounties: "&r &cInga prissummor har satts!"

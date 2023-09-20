@@ -1,0 +1,34 @@
+death:
+  same-team: "&aDe speler die je hebt gedood heeft een actieve beloning, maar je zit in hetzelfde team als zij!"
+  announce-claimed: "&4&l{killer} heeft de beloning van {victim} ter waarde van ${bounty} geclaimd"
+
+command:
+  no-permission: "&cJe hebt geen toestemming om deze opdracht te gebruiken!"
+  no-permission-detailed: "{no-permission-msg} &7({permission})"
+  admin:
+    reload:
+      reloaded: "&aDe configuratiebestanden zijn succesvol herladen!"
+    version:
+      no-permission: "&7(Versie niet zichtbaar: Ontbrekende toestemming)"
+  bounty:
+    no-action: "&cJe moet een actie specificeren! /beloning <zet/hoogte/controle>"
+    invalid-action: "&cDit is geen geldige actie!"
+    set:
+      missing-args: "&cJe moet een speler en een bedrag specificeren! /beloning zet <speler> <bedrag>"
+      amount-nan: "&cDit is geen geldig nummer!"
+      player-not-found: "&cDie speler is niet online of bestaat niet!"
+      under-minimum: "&cHet bedrag van de beloning dat je hebt ingesteld is te laag. Het minimumbedrag voor een beloning is {minimum}!"
+      over-maximum: "&cHet bedrag van de beloning dat je hebt ingesteld is te hoog. Het maximumbedrag voor een beloning is {maximum}!"
+      not-enough-money: "&cJe hebt niet genoeg geld hiervoor!"
+      internal-invalid-value: "&cTijdens het interne verwerkingsproces is een ongeldige waarde bereikt. Meld dit aan een beheerder!"
+      success: "&cJe hebt een beloning van {bounty} geplaatst op het hoofd van {target}!"
+      announce: "\nEr is een beloning van {bounty} geplaatst op het hoofd van {target} door {player}!{extra}\n"
+      announce-extra: " (Totaal: {total})"
+    check:
+      no-player-specified: "&cJe moet een speler specificeren! /beloning controle <speler>"
+      player-not-found: "&cDie speler is niet online of bestaat niet!"
+      no-bounty: "&cEr staat geen beloning op het hoofd van {target}!"
+      bounty-found: "&aEr staat een beloning ter waarde van {bounty} op het hoofd van {target}!"
+    top:
+      top-10: "&eTop 10 beloningen:"
+      no-bounties: "&r &cEr zijn geen beloningen ingesteld!"

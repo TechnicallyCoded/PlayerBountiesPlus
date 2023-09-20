@@ -2,16 +2,18 @@
 # To contribute new languages, please join our Discord server or open a pull request on GitHub!
 # You can find both of these links on the plugin download page: https://www.spigotmc.org/resources/player-bounties-plus.108637/
 #
-# Manually translated:
+# Manually verified translations:
+# de_de - German (Germany)
 # en_us - English (US)
 # en_gb - English (UK)
 # fr_fr - French (France)
+# nl_nl - Dutch (Netherlands)
 #
 # Automatically translated (may contain issues):
-# de_de - German (Germany)
 # es_es - Spanish (Spain)
 # hi_in - Hindi (India)
 # ru_ru - Russian (Russia)
+# se_se - Swedish (Sweden)
 # zh_cn - Chinese (China)
 # en_uwu - English (Don't ask)
 lang: "en_us"
