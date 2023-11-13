@@ -1,11 +1,11 @@
 package com.tcoded.playerbountiesplus.hook.team;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import me.loving11ish.clans.models.Clan;
+import me.loving11ish.clans.utils.ClansStorageUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.Nullable;
-import xyz.gamlin.clans.models.Clan;
-import xyz.gamlin.clans.utils.ClansStorageUtil;
 
 public class ClansLiteHook extends AbstractTeamHook {
 
