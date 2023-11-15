@@ -1,6 +1,10 @@
+# Contributions:
+#   DISCORD TAG          DISCORD ID            DATE
+# - @nemtomdddd     (439091254400122893)    2023-11-15
+
 death:
-  same-team: "&aA játékos, akit megöltél, aktív fejadalmat tart, de ugyanabba a csapatba tartozol, mint ő!"
-  announce-claimed: "&4&l{killer} behajtotta {victim} fejvadászatát, értéke ${bounty}"
+  same-team: "&aA játékos, akit megöltél, aktív fejpénzt volt a fején, de ugyanabba a csapatba tartozol, mint ő!"
+  announce-claimed: "&4&l{killer} behajtotta {victim} fejpénzét és megkapta jutalmát aminek értéke: ${bounty}"
 
 command:
   no-permission: "&cNincs jogosultságod ennek a parancsnak a használatához!"
@@ -11,24 +15,24 @@ command:
     version:
       no-permission: "&7(Változat nem látható: Hiányzó jogosultság)"
   bounty:
-    no-action: "&cMeg kell adnod egy cselekvést! /bounty <set/top/check>"
-    invalid-action: "&cEz nem érvényes cselekvés!"
+    no-action: "&cMeg kell adnod egy parancsot! /bounty <set/top/check>"
+    invalid-action: "&cEz nem érvényes parancs!"
     set:
-      missing-args: "&cMeg kell adnod egy játékost és egy összeget! /bounty set <player> <amount>"
+      missing-args: "&cMeg kell adnod egy játékost és egy összeget! /bounty set <játékosnév> <összeg>"
       amount-nan: "&cEz nem érvényes szám!"
       player-not-found: "&cEz a játékos nem található vagy nem létezik!"
-      under-minimum: "&cAz általad beállított fejadalom túl alacsony. A minimális fejadalom összeg {minimum}!"
-      over-maximum: "&cAz általad beállított fejadalom túl magas. A maximális fejadalom összeg {maximum}!"
+      under-minimum: "&cAz általad beállított fejpénz túl alacsony. A minimális fejpénz összeg {minimum}!"
+      over-maximum: "&cAz általad beállított fejpénz túl magas. A maximális fejpénz összeg {maximum}!"
       not-enough-money: "&cNincs elég pénzed ehhez!"
       internal-invalid-value: "&cÉrvénytelen érték merült fel a belső feldolgozás során. Kérlek, jelezd ezt egy adminisztrátornak!"
-      success: "&cFejadalmat helyeztél {target} fejére: {bounty}!"
-      announce: "\n{player} tette {target} fejére a {bounty} összegű fejadalmat!{extra}\n"
+      success: "&cFejpénzt helyeztél {target} fejére: {bounty}!"
+      announce: "\n{player} fejpénzt tett {target} fejére . A fejpénz {bounty} összegű !{extra}\n"
       announce-extra: " (Összesen: {total})"
     check:
       no-player-specified: "&cMeg kell adnod egy játékost! /bounty check <player>"
       player-not-found: "&cEz a játékos nem található vagy nem létezik!"
-      no-bounty: "&cNincs fejadalom {target} fején!"
-      bounty-found: "&aVan egy {bounty} értékű fejadalom {target} fején!"
+      no-bounty: "&cNincs fejpénz {target} fején!"
+      bounty-found: "&aVan egy {bounty} értékű fejpénz {target} fején!"
     top:
-      top-10: "&eLegjobb 10 fejadalom:"
-      no-bounties: "&r &cNincs beállított fejadalom!"
+      top-10: "&eLegnagyobb 10 jutalom fejpénz:"
+      no-bounties: "&r &cNincs beállított fejpénz a játékoson!"
