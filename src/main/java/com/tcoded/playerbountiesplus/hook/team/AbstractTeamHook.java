@@ -33,6 +33,18 @@ public abstract class AbstractTeamHook {
             return new AlessioPartiesHook(plugin, partiesPlugin);
         }
 
+        // booksaw - BetterTeams - https://www.spigotmc.org/resources/better-teams.17129/
+        Plugin betterTeamsPlugin = pluginManager.getPlugin("BetterTeams");
+        if (betterTeamsPlugin != null && betterTeamsPlugin.isEnabled()) {
+            return new BetterTeamsHook(plugin, betterTeamsPlugin);
+        }
+
+        // RoinujNosde - SimpleClans - https://www.spigotmc.org/resources/simpleclans.71242/
+        Plugin simpleClansPlugin = pluginManager.getPlugin("SimpleClans");
+        if (simpleClansPlugin != null && simpleClansPlugin.isEnabled()) {
+            return new SimpleClansHook(plugin, simpleClansPlugin);
+        }
+
         return null;
     }
 

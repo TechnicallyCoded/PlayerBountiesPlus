@@ -12,6 +12,8 @@ depend:
 softdepend:
   - ClansLite
   - Parties
+  - BetterTeams
+  - SimpleClans
 
 commands:
   bounty:
