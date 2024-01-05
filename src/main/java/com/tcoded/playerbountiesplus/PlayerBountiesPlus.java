@@ -1,7 +1,6 @@
 package com.tcoded.playerbountiesplus;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.command.PlayerBountiesPlusAdminCmd;
@@ -20,7 +19,6 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerBountiesPlus extends JavaPlugin {

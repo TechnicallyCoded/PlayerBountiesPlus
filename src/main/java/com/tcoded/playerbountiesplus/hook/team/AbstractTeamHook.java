@@ -45,6 +45,14 @@ public abstract class AbstractTeamHook {
             return new SimpleClansHook(plugin, simpleClansPlugin);
         }
 
+        // SaberLLC - Factions (SaberFactions) - https://www.spigotmc.org/resources/simpleclans.71242/
+        Plugin saberFactionsPlugin = pluginManager.getPlugin("Factions");
+        if (saberFactionsPlugin != null &&
+                saberFactionsPlugin.getDescription().getMain().equals("com.massivecraft.factions.FactionsPlugin") &&
+                saberFactionsPlugin.isEnabled()) {
+            return new SaberFactionsHook(plugin, saberFactionsPlugin);
+        }
+
         return null;
     }
 
@@ -56,6 +64,12 @@ public abstract class AbstractTeamHook {
         List<String> authors = this.teamPlugin.getDescription().getAuthors();
         if (authors.isEmpty()) return "N/A";
         return authors.get(0);
+    }
+
+    public String[] getAuthors() {
+        List<String> authors = this.teamPlugin.getDescription().getAuthors();
+        if (authors.isEmpty()) return new String[0];
+        return authors.toArray(new String[0]);
     }
 
     public abstract boolean isFriendly(Player player1, Player player2);

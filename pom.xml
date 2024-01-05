@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.4.5</version>
+    <version>1.4.7</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -164,6 +164,11 @@
             <artifactId>SimpleClans</artifactId>
             <version>2.15.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.SaberLLC</groupId>
+            <artifactId>Saber-Factions</artifactId>
+            <version>4.1.2-STABLE</version>
         </dependency>
     </dependencies>
 </project>
