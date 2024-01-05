@@ -94,7 +94,7 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         findPluginWithQuery(plugins, metrics, "teams");
         findPluginWithQuery(plugins, metrics, "clan");
         findPluginWithQuery(plugins, metrics, "clans");
-        findPluginWithQuery(plugins, metrics, "party");
+        findPluginWithQuery(plugins, metrics, "party", "voteparty");
         findPluginWithQuery(plugins, metrics, "parties");
         findPluginWithQuery(plugins, metrics, "guild");
         findPluginWithQuery(plugins, metrics, "guilds");
@@ -140,11 +140,23 @@ public final class PlayerBountiesPlus extends JavaPlugin {
 
     // Utils
 
-    private static void findPluginWithQuery(List<Plugin> plugins, Metrics metrics, String pluginNameQuery) {
-        String firstPluginFound = plugins.stream().filter(p -> p.getName().toLowerCase().contains(pluginNameQuery)).findFirst().map(p -> {
-            List<String> authors = p.getDescription().getAuthors();
-            return p.getName() + " (" + (authors.isEmpty() ? "N/A" : authors.get(0)) + ")";
-        }).orElse(null);
+    private static void findPluginWithQuery(List<Plugin> plugins, Metrics metrics, String pluginNameQuery, String... excludeStrings) {
+        String firstPluginFound = plugins.stream()
+                .filter(p -> {
+                    String lowerName = p.getName().toLowerCase();
+                    // If the plugin name doesn't contain the query, skip
+                    if (!lowerName.contains(pluginNameQuery)) return false;
+                    // If the plugin name contains any of the exclude strings, skip
+                    for (String excludeString : excludeStrings) {
+                        if (lowerName.contains(excludeString)) return false;
+                    }
+                    return true;
+                })
+                .findFirst()
+                .map(p -> {
+                    List<String> authors = p.getDescription().getAuthors();
+                    return p.getName() + " (" + (authors.isEmpty() ? "N/A" : authors.get(0)) + ")";
+                }).orElse(null);
 
         if (firstPluginFound == null) return;
 

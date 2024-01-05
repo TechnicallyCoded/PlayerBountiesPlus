@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.4.4</version>
+    <version>1.4.5</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>com.github.Loving11ish</groupId>
             <artifactId>ClansLite</artifactId>
-            <version>v1.4.0</version>
+            <version>v1.4.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
