@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -87,6 +87,10 @@
             <id>devmart-public</id>
             <url>https://nexuslite.gcnt.net/repos/public/</url>
         </repository>
+        <repository>
+            <id>devmart-tcoded</id>
+            <url>https://nexuslite.gcnt.net/repos/tcoded/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -131,11 +135,13 @@
             <groupId>com.github.lightlibs</groupId>
             <artifactId>LegacyColorCodeParser</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.lightlibs</groupId>
+            <groupId>com.tcoded.lightlibs</groupId>
             <artifactId>SpigotUpdateChecker</artifactId>
-            <version>1.1.1</version>
+            <version>1.1.2</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>

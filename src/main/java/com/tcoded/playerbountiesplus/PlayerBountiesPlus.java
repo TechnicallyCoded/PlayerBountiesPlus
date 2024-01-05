@@ -105,7 +105,12 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     }
 
     public void checkUpdate() {
-        SimpleUpdateChecker.checkUpdate(this, ChatColor.translateAlternateColorCodes('&', "&f[&bPlayerBountiesPlus&f] "), 108637);
+        SimpleUpdateChecker.checkUpdate(
+                this,
+                ChatColor.translateAlternateColorCodes('&', "&f[&bPlayerBountiesPlus&f] "),
+                108637,
+                runnable -> this.getFoliaLib().getImpl().runAsync(runnable)
+        );
     }
 
     @Override
