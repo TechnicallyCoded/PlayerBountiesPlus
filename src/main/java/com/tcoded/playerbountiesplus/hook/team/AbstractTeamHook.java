@@ -53,6 +53,12 @@ public abstract class AbstractTeamHook {
             return new SaberFactionsHook(plugin, saberFactionsPlugin);
         }
 
+        // LlmDl - Towny - https://www.spigotmc.org/resources/towny-advanced.72694/
+        Plugin townyPlugin = pluginManager.getPlugin("Towny");
+        if (townyPlugin != null && townyPlugin.isEnabled()) {
+            return new TownyHook(plugin, simpleClansPlugin);
+        }
+
         return null;
     }
 
