@@ -31,6 +31,10 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     // Instance
     private static PlayerBountiesPlus instance;
 
+    public static PlayerBountiesPlus getInstance() {
+        return instance;
+    }
+
     // Utils
     private FoliaLib foliaLib;
     private LangUtil langUtil;
