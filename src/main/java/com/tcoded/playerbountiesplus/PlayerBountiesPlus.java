@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableList;
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.command.PlayerBountiesPlusAdminCmd;
-import com.tcoded.playerbountiesplus.hook.VaultHook;
+import com.tcoded.playerbountiesplus.hook.currency.AbstractEconomyHook;
+import com.tcoded.playerbountiesplus.hook.currency.DummyEcoHook;
+import com.tcoded.playerbountiesplus.hook.currency.VaultHook;
 import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
@@ -17,11 +19,17 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.ServicePriority;
+import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
 public final class PlayerBountiesPlus extends JavaPlugin {
+
+    // Instance
+    private static PlayerBountiesPlus instance;
 
     // Utils
     private FoliaLib foliaLib;
@@ -31,8 +39,12 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     private BountyDataManager bountyDataManager;
 
     // Hooks
-    private VaultHook vault;
+    private AbstractEconomyHook ecoHook;
     private AbstractTeamHook teamHook;
+
+    public PlayerBountiesPlus() {
+        instance = this;
+    }
 
     @Override
     public void onEnable() {
@@ -48,13 +60,11 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         this.bountyDataManager = new BountyDataManager(this);
         this.bountyDataManager.init();
 
-        // Hooks
-        this.vault = new VaultHook(this);
-        boolean ecoPresent = this.vault.init();
-        if (!ecoPresent) {
-            getLogger().severe("No economy is present! Aborting startup!");
-            return;
-        }
+        // Economy Hooks
+        registerDefaultEcoHooks();
+        if (!applyEcoHookRegistration()) return;
+
+        // Team Hooks
         this.teamHook = AbstractTeamHook.findTeamHook(this);
         if (this.teamHook == null) {
             getLogger().warning("There is no supported team/clan/party plugin on the server! Feel free to request support for the plugin you use on GitHub or Discord!");
@@ -116,8 +126,8 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         HandlerList.unregisterAll(this);
     }
 
-    public VaultHook getVaultHook() {
-        return this.vault;
+    public AbstractEconomyHook getEcoHook() {
+        return this.ecoHook;
     }
 
     public AbstractTeamHook getTeamHook() {
@@ -159,5 +169,38 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         if (firstPluginFound == null) return;
 
         metrics.addCustomChart(new SimplePie("plugins_query_" + pluginNameQuery, () -> firstPluginFound));
+    }
+
+    private void registerDefaultEcoHooks() {
+        ServicesManager servicesManager = getServer().getServicesManager();
+
+        // Unregister old eco hooks
+        servicesManager.unregisterAll(this);
+
+        // Register vault economy hook
+        VaultHook vaultEcoHook = new VaultHook(this);
+        boolean ecoPresent = vaultEcoHook.init();
+
+        // Register or fallback
+        if (ecoPresent) servicesManager.register(AbstractEconomyHook.class, vaultEcoHook, this, ServicePriority.Low);
+        else servicesManager.register(AbstractEconomyHook.class, new DummyEcoHook(), this, ServicePriority.Lowest);
+    }
+
+    public boolean applyEcoHookRegistration() {
+        // Get economy hook
+        ServicesManager servicesManager = getServer().getServicesManager();
+        RegisteredServiceProvider<AbstractEconomyHook> ecoHookProvider = servicesManager.getRegistration(AbstractEconomyHook.class);
+        if (ecoHookProvider == null) {
+            getLogger().severe("No economy hook is present! Aborting startup!");
+            return false;
+        }
+
+        String hookName = ecoHookProvider.getProvider().getClass().getSimpleName();
+        String hookPluginName = ecoHookProvider.getPlugin().getName();
+
+        getLogger().info("Using economy hook: " + hookName + " from plugin: " + hookPluginName);
+        this.ecoHook = ecoHookProvider.getProvider();
+
+        return true;
     }
 }

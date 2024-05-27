@@ -52,7 +52,7 @@ public class BountySetCmd {
         // Check money
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            boolean allowed = plugin.getVaultHook().takeMoney(player, amount);
+            boolean allowed = plugin.getEcoHook().takeEco(player, amount);
 
             if (!allowed) {
                 sender.sendMessage(plugin.getLang().getColored("command.bounty.set.not-enough-money"));

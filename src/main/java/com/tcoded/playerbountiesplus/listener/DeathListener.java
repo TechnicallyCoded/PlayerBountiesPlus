@@ -47,15 +47,15 @@ public class DeathListener implements Listener {
                 double awardedAmount = bounty * claimMultiplier;
 
                 if (awardedAmount > 0) {
-                    this.plugin.getVaultHook().addMoney(killer, awardedAmount);
+                    this.plugin.getEcoHook().giveEco(killer, awardedAmount);
                 } else if (awardedAmount < 0) {
-                    this.plugin.getVaultHook().takeMoney(killer, Math.abs(awardedAmount));
+                    this.plugin.getEcoHook().takeEco(killer, Math.abs(awardedAmount));
                 }
             }
 
             // Optional - Take from victim as punishment
             if (plugin.getConfig().getBoolean("bounty-take-from-victim", false)) {
-                this.plugin.getVaultHook().takeMoney(victim, bounty, true);
+                this.plugin.getEcoHook().takeEco(victim, bounty, true);
             }
 
             // Announce Reward
