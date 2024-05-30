@@ -121,9 +121,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Loving11ish</groupId>
-            <artifactId>ClansLite</artifactId>
-            <version>v1.4.3</version>
+            <groupId>com.github.CraptiCraft-Development</groupId>
+            <artifactId>ClansLite-API</artifactId>
+            <version>1.4.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
