@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.command.PlayerBountiesPlusAdminCmd;
+import com.tcoded.playerbountiesplus.hook.PAPIExpansion;
 import com.tcoded.playerbountiesplus.hook.currency.AbstractEconomyHook;
 import com.tcoded.playerbountiesplus.hook.currency.DummyEcoHook;
 import com.tcoded.playerbountiesplus.hook.currency.VaultHook;
@@ -14,6 +15,7 @@ import com.tcoded.playerbountiesplus.util.LangUtil;
 import com.tcoded.updatechecker.SimpleUpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -45,6 +47,8 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     // Hooks
     private AbstractEconomyHook ecoHook;
     private AbstractTeamHook teamHook;
+
+    private PAPIExpansion papiExpansion;
 
     public PlayerBountiesPlus() {
         instance = this;
@@ -110,6 +114,11 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         findPluginWithQuery(plugins, metrics, "parties");
         findPluginWithQuery(plugins, metrics, "guild");
         findPluginWithQuery(plugins, metrics, "guilds");
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            papiExpansion = new PAPIExpansion(this);
+            papiExpansion.register();
+        }
     }
 
     public void reloadLang() {
