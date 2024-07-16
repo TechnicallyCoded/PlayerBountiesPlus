@@ -137,6 +137,11 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
+
+        // Unregister PlaceholderAPI expansion
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null && papiExpansion.isRegistered()) {
+            papiExpansion.unregister();
+        }
     }
 
     public AbstractEconomyHook getEcoHook() {

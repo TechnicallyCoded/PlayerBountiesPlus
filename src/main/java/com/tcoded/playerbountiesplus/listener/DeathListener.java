@@ -29,6 +29,11 @@ public class DeathListener implements Listener {
             UUID victimId = victim.getUniqueId();
             Integer bounty = bounties.get(victimId);
 
+            if (killer == victim) {
+                killer.sendMessage(plugin.getLang().getColored("death.self-kill"));
+                return;
+            }
+
             // Bounty check
             if (bounty == null || bounty == 0) {
                 return;

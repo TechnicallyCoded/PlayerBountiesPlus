@@ -1,6 +1,7 @@
 death:
   same-team: "&aThe player you killed has an active bounty but you are in the same team as they are!"
   announce-claimed: "&4&l{killer} claimed {victim}'s bounty worth ${bounty}"
+  self-kill: "&cYou can't claim a bounty by kill yourself!"
 
 command:
   no-permission: "&cYou don't have the permission to use this command!"
