@@ -4,10 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.command.PlayerBountiesPlusAdminCmd;
-import com.tcoded.playerbountiesplus.hook.currency.AbstractEconomyHook;
+import com.tcoded.playerbountiesplus.hook.currency.EconomyHook;
 import com.tcoded.playerbountiesplus.hook.currency.DummyEcoHook;
 import com.tcoded.playerbountiesplus.hook.currency.VaultHook;
+import com.tcoded.playerbountiesplus.hook.placeholder.PlaceholderHook;
 import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
+import com.tcoded.playerbountiesplus.hook.team.TeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import com.tcoded.playerbountiesplus.util.LangUtil;
@@ -43,8 +45,9 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     private BountyDataManager bountyDataManager;
 
     // Hooks
-    private AbstractEconomyHook ecoHook;
-    private AbstractTeamHook teamHook;
+    private EconomyHook ecoHook;
+    private TeamHook teamHook;
+    private PlaceholderHook placeholderHook;
 
     public PlayerBountiesPlus() {
         instance = this;
@@ -69,10 +72,14 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         if (!applyEcoHookRegistration()) return;
 
         // Team Hooks
-        this.teamHook = AbstractTeamHook.findTeamHook(this);
+        this.teamHook = TeamHook.findTeamHook(this);
         if (this.teamHook == null) {
             getLogger().warning("There is no supported team/clan/party plugin on the server! Feel free to request support for the plugin you use on GitHub or Discord!");
         }
+
+        // Placeholder Hooks
+        this.placeholderHook = PlaceholderHook.findPlaceholderHook(this);
+        this.placeholderHook.enable();
 
         // Commands
         PluginCommand bountyCmd = this.getCommand("bounty");
@@ -128,14 +135,19 @@ public final class PlayerBountiesPlus extends JavaPlugin {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
+        this.placeholderHook.disable();
     }
 
-    public AbstractEconomyHook getEcoHook() {
+    public EconomyHook getEcoHook() {
         return this.ecoHook;
     }
 
-    public AbstractTeamHook getTeamHook() {
+    public TeamHook getTeamHook() {
         return teamHook;
+    }
+
+    public PlaceholderHook getPlaceholderHook() {
+        return placeholderHook;
     }
 
     public BountyDataManager getBountyDataManager() {
@@ -186,14 +198,14 @@ public final class PlayerBountiesPlus extends JavaPlugin {
         boolean ecoPresent = vaultEcoHook.init();
 
         // Register or fallback
-        if (ecoPresent) servicesManager.register(AbstractEconomyHook.class, vaultEcoHook, this, ServicePriority.Low);
-        else servicesManager.register(AbstractEconomyHook.class, new DummyEcoHook(), this, ServicePriority.Lowest);
+        if (ecoPresent) servicesManager.register(EconomyHook.class, vaultEcoHook, this, ServicePriority.Low);
+        else servicesManager.register(EconomyHook.class, new DummyEcoHook(), this, ServicePriority.Lowest);
     }
 
     public boolean applyEcoHookRegistration() {
         // Get economy hook
         ServicesManager servicesManager = getServer().getServicesManager();
-        RegisteredServiceProvider<AbstractEconomyHook> ecoHookProvider = servicesManager.getRegistration(AbstractEconomyHook.class);
+        RegisteredServiceProvider<EconomyHook> ecoHookProvider = servicesManager.getRegistration(EconomyHook.class);
         if (ecoHookProvider == null) {
             getLogger().severe("No economy hook is present! Aborting startup!");
             return false;

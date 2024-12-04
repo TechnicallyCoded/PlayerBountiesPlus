@@ -50,6 +50,22 @@ public class BountyDataManager {
         return this.bounties;
     }
 
+    public boolean hasBounty(UUID player) {
+        return this.bounties.containsKey(player) && this.bounties.get(player) > 0;
+    }
+
+    public void setBounty(UUID player, int amount) {
+        this.bounties.put(player, amount);
+    }
+
+    public int getBounty(UUID player) {
+        return this.bounties.getOrDefault(player, 0);
+    }
+
+    public void removeBounty(UUID player) {
+        this.bounties.remove(player);
+    }
+
     public void saveBounties() {
         synchronized (this.savingFileLock) {
             // Clear existing
@@ -92,4 +108,5 @@ public class BountyDataManager {
             }
         });
     }
+
 }
