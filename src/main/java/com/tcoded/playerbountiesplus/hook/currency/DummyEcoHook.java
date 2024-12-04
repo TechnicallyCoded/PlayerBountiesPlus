@@ -2,7 +2,7 @@ package com.tcoded.playerbountiesplus.hook.currency;
 
 import org.bukkit.entity.Player;
 
-public class DummyEcoHook extends AbstractEconomyHook {
+public class DummyEcoHook implements EconomyHook {
 
     @Override
     public boolean isValid() {

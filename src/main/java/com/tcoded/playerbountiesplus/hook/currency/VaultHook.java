@@ -6,7 +6,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-public class VaultHook extends AbstractEconomyHook {
+public class VaultHook implements EconomyHook {
 
     private final PlayerBountiesPlus plugin;
 

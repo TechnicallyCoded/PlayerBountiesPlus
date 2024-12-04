@@ -1,12 +1,12 @@
 package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class BountySetCmd {
 
@@ -17,7 +17,7 @@ public class BountySetCmd {
         }
 
         String playerNameArg = args[1];
-        int amount;
+        float amount;
         try {
             amount = Integer.parseInt(args[2]);
         } catch (NumberFormatException ex) {
@@ -61,7 +61,7 @@ public class BountySetCmd {
         }
 
         // Apply bounty multiplier
-        amount *= plugin.getConfig().getDouble("bounty-multiplier", 1.0);
+        amount *= (float) plugin.getConfig().getDouble("bounty-multiplier", 1.0);
 
         // Sanity check final amount
         if (amount <= 0) {
@@ -72,10 +72,10 @@ public class BountySetCmd {
         UUID playerUUID = target.getUniqueId();
 
         // Calculate total bounty including previous bounties
-        ConcurrentHashMap<UUID, Integer> bounties = plugin.getBountyDataManager().getBounties();
-        Integer bountyAlreadyPresent = bounties.getOrDefault(playerUUID, 0);
-        int totalBounty = amount + bountyAlreadyPresent;
-        bounties.put(playerUUID, totalBounty);
+        BountyDataManager bountyDataManager = plugin.getBountyDataManager();
+        int bountyAlreadyPresent = bountyDataManager.getBounty(playerUUID);
+        int totalBounty = ((int) amount) + bountyAlreadyPresent;
+        bountyDataManager.setBounty(playerUUID, totalBounty);
 
         // Confirmation
         sender.sendMessage(
@@ -104,7 +104,7 @@ public class BountySetCmd {
             );
         }
 
-        plugin.getBountyDataManager().saveBountiesAsync();
+        bountyDataManager.saveBountiesAsync();
 
         return true;
     }
