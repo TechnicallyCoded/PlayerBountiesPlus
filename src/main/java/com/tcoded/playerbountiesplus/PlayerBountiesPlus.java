@@ -2,6 +2,7 @@ package com.tcoded.playerbountiesplus;
 
 import com.google.common.collect.ImmutableList;
 import com.tcoded.folialib.FoliaLib;
+import com.tcoded.lightlibs.updatechecker.SimpleUpdateChecker;
 import com.tcoded.playerbountiesplus.command.BountyCommand;
 import com.tcoded.playerbountiesplus.command.PlayerBountiesPlusAdminCmd;
 import com.tcoded.playerbountiesplus.hook.currency.EconomyHook;
@@ -13,7 +14,6 @@ import com.tcoded.playerbountiesplus.hook.team.TeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import com.tcoded.playerbountiesplus.util.LangUtil;
-import com.tcoded.updatechecker.SimpleUpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.ChatColor;
@@ -128,7 +128,7 @@ public final class PlayerBountiesPlus extends JavaPlugin {
                 this,
                 ChatColor.translateAlternateColorCodes('&', "&f[&bPlayerBountiesPlus&f] "),
                 108637,
-                runnable -> this.getFoliaLib().getImpl().runAsync(runnable)
+                runnable -> this.getFoliaLib().getScheduler().runAsync(wt -> runnable.run())
         );
     }
 

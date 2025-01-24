@@ -99,7 +99,7 @@ public class BountyDataManager {
         }
 
         // Save
-        this.plugin.getFoliaLib().getImpl().runAsync(() -> {
+        this.plugin.getFoliaLib().getScheduler().runAsync(wt -> {
             this.saveBounties();
 
             this.savingAsync.set(false);
