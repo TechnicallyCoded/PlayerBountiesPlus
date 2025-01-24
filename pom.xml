@@ -6,7 +6,7 @@
 
     <groupId>com.tcoded</groupId>
     <artifactId>PlayerBountiesPlus</artifactId>
-    <version>1.4.7</version>
+    <version>1.4.9</version>
     <packaging>jar</packaging>
 
     <name>PlayerBountiesPlus</name>
@@ -95,6 +95,14 @@
             <id>codemc-repo</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
+        <repository>
+            <id>glaremasters repo</id>
+            <url>https://repo.glaremasters.me/repository/towny/</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -117,9 +125,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Loving11ish</groupId>
-            <artifactId>ClansLite</artifactId>
-            <version>v1.4.3</version>
+            <groupId>com.github.CraptiCraft-Development</groupId>
+            <artifactId>ClansLite-API</artifactId>
+            <version>1.4.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -169,6 +177,19 @@
             <groupId>com.github.SaberLLC</groupId>
             <artifactId>Saber-Factions</artifactId>
             <version>4.1.2-STABLE</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.palmergames.bukkit.towny</groupId>
+            <artifactId>towny</artifactId>
+            <version>0.100.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.6</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

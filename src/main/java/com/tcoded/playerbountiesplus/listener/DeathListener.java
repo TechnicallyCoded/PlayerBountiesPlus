@@ -1,7 +1,8 @@
 package com.tcoded.playerbountiesplus.listener;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
-import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
+import com.tcoded.playerbountiesplus.hook.team.TeamHook;
+import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -9,11 +10,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class DeathListener implements Listener {
 
-    private PlayerBountiesPlus plugin;
+    private final PlayerBountiesPlus plugin;
 
     public DeathListener(PlayerBountiesPlus plugin) {
         this.plugin = plugin;
@@ -25,17 +25,18 @@ public class DeathListener implements Listener {
         Player killer = victim.getKiller();
 
         if (killer != null) {
-            ConcurrentHashMap<UUID, Integer> bounties = this.plugin.getBountyDataManager().getBounties();
+            BountyDataManager bountyDataManager = this.plugin.getBountyDataManager();
             UUID victimId = victim.getUniqueId();
-            Integer bounty = bounties.get(victimId);
 
             // Bounty check
-            if (bounty == null || bounty == 0) {
+            if (bountyDataManager.hasBounty(victimId)) {
                 return;
             }
 
+            int bounty = bountyDataManager.getBounty(victimId);
+
             // Clan check
-            AbstractTeamHook teamHook = this.plugin.getTeamHook();
+            TeamHook teamHook = this.plugin.getTeamHook();
             if (teamHook != null && teamHook.isFriendly(killer, victim)) {
                 killer.sendMessage(plugin.getLang().getColored("death.same-team"));
                 return;
@@ -47,15 +48,15 @@ public class DeathListener implements Listener {
                 double awardedAmount = bounty * claimMultiplier;
 
                 if (awardedAmount > 0) {
-                    this.plugin.getVaultHook().addMoney(killer, awardedAmount);
+                    this.plugin.getEcoHook().giveEco(killer, awardedAmount);
                 } else if (awardedAmount < 0) {
-                    this.plugin.getVaultHook().takeMoney(killer, Math.abs(awardedAmount));
+                    this.plugin.getEcoHook().takeEco(killer, Math.abs(awardedAmount));
                 }
             }
 
             // Optional - Take from victim as punishment
             if (plugin.getConfig().getBoolean("bounty-take-from-victim", false)) {
-                this.plugin.getVaultHook().takeMoney(victim, bounty, true);
+                this.plugin.getEcoHook().takeEco(victim, bounty, true);
             }
 
             // Announce Reward
@@ -64,13 +65,13 @@ public class DeathListener implements Listener {
                         plugin.getLang().getColored("death.announce-claimed")
                                 .replace("{killer}", killer.getName())
                                 .replace("{victim}", victim.getName())
-                                .replace("{bounty}", bounty.toString())
+                                .replace("{bounty}", String.valueOf(bounty))
                 );
             }
 
             // Remove bounty
-            bounties.remove(victimId);
-            this.plugin.getBountyDataManager().saveBountiesAsync();
+            bountyDataManager.removeBounty(victimId);
+            bountyDataManager.saveBountiesAsync();
         }
     }
 

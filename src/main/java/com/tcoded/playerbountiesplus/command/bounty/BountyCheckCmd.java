@@ -1,6 +1,7 @@
 package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,14 +27,16 @@ public class BountyCheckCmd {
 
         UUID playerUUID = target.getUniqueId();
 
-        Integer amount = plugin.getBountyDataManager().getBounties().get(playerUUID);
+        BountyDataManager bountyDataManager = plugin.getBountyDataManager();
+        boolean hasBounty = bountyDataManager.hasBounty(playerUUID);
 
-        if (amount != null && amount > 0) {
+        if (hasBounty) {
             // Confirmation
+            int bounty = bountyDataManager.getBounty(playerUUID);
             sender.sendMessage(
                     plugin.getLang().getColored("command.bounty.check.bounty-found")
                             .replace("{target}", target.getName())
-                            .replace("{bounty}", amount.toString())
+                            .replace("{bounty}", Integer.toString(bounty))
             );
         } else {
             sender.sendMessage(

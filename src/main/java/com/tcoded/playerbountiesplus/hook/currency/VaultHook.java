@@ -1,15 +1,12 @@
-package com.tcoded.playerbountiesplus.hook;
+package com.tcoded.playerbountiesplus.hook.currency;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import java.util.UUID;
-
-public class VaultHook {
+public class VaultHook implements EconomyHook {
 
     private final PlayerBountiesPlus plugin;
 
@@ -34,18 +31,27 @@ public class VaultHook {
         return true;
     }
 
-    public void addMoney(Player player, double amount) {
+    @Override
+    public boolean isValid() {
+        return eco != null;
+    }
+
+    @Override
+    public void giveEco(Player player, double amount) {
         this.eco.depositPlayer(player, amount);
     }
 
-    public boolean takeMoney(Player player, double amount) {
-        return this.takeMoney(player, amount, false);
+    @Override
+    public boolean takeEco(Player player, double amount) {
+        return this.takeEco(player, amount, false);
     }
 
-    public boolean takeMoney(Player player, double amount, boolean force) {
+    @Override
+    public boolean takeEco(Player player, double amount, boolean force) {
         double balance = this.eco.getBalance(player);
         if (balance < amount && !force) return false;
 
         return this.eco.withdrawPlayer(player, amount).type == EconomyResponse.ResponseType.SUCCESS;
     }
+
 }
