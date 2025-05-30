@@ -29,7 +29,7 @@ public class DeathListener implements Listener {
             UUID victimId = victim.getUniqueId();
 
             // Bounty check
-            if (bountyDataManager.hasBounty(victimId)) {
+            if (!bountyDataManager.hasBounty(victimId)) {
                 return;
             }
 
