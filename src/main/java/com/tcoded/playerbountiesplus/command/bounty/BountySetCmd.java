@@ -1,6 +1,7 @@
 package com.tcoded.playerbountiesplus.command.bounty;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import com.tcoded.playerbountiesplus.event.BountySetEvent;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -62,6 +63,17 @@ public class BountySetCmd {
 
         // Apply bounty multiplier
         amount *= (float) plugin.getConfig().getDouble("bounty-multiplier", 1.0);
+
+        // Trigger bounty set event
+        BountySetEvent event = new BountySetEvent(sender instanceof Player ? (Player) sender : null, target, amount);
+        plugin.getServer().getPluginManager().callEvent(event);
+        amount = event.getAmount();
+
+        // Check if event was cancelled
+        if (event.isCancelled()) {
+            sender.sendMessage(plugin.getLang().getColored("command.bounty.set.cancelled"));
+            return true;
+        }
 
         // Sanity check final amount
         if (amount <= 0) {

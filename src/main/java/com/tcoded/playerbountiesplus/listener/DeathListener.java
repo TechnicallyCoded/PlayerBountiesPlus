@@ -1,6 +1,7 @@
 package com.tcoded.playerbountiesplus.listener;
 
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
+import com.tcoded.playerbountiesplus.event.BountyClaimEvent;
 import com.tcoded.playerbountiesplus.hook.team.TeamHook;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.entity.Player;
@@ -39,6 +40,15 @@ public class DeathListener implements Listener {
             TeamHook teamHook = this.plugin.getTeamHook();
             if (teamHook != null && teamHook.isFriendly(killer, victim)) {
                 killer.sendMessage(plugin.getLang().getColored("death.same-team"));
+                return;
+            }
+
+            // Trigger Bounty Claimed Event
+            BountyClaimEvent claimEvent = new BountyClaimEvent(killer, victim, bounty);
+            this.plugin.getServer().getPluginManager().callEvent(claimEvent);
+
+            // Check if event is cancelled
+            if (claimEvent.isCancelled()) {
                 return;
             }
 
