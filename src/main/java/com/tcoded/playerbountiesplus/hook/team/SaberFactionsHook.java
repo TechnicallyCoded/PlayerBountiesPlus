@@ -14,8 +14,13 @@ public class SaberFactionsHook extends AbstractTeamHook {
     @Override
     public boolean isFriendly(Player player1, Player player2) {
         FPlayers fPlayers = FPlayers.getInstance();
+
         String factionId1 = fPlayers.getByPlayer(player1).getFactionId();
         String factionId2 = fPlayers.getByPlayer(player2).getFactionId();
+
+        if (factionId1 == null) return false;
+        if (factionId2 == null) return false;
+
         return factionId1.equals(factionId2);
     }
 

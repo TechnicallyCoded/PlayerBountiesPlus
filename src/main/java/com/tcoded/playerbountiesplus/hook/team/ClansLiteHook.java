@@ -23,7 +23,12 @@ public class ClansLiteHook extends AbstractTeamHook {
 
     @Override
     public boolean isFriendly(Player player1, Player player2) {
-        String clanIdVictim = this.getClanId(player1);
-        return clanIdVictim != null && clanIdVictim.equals(this.getClanId(player2));
+        String clanId1 = this.getClanId(player1);
+        String clanId2 = this.getClanId(player2);
+
+        if (clanId1 == null) return false;
+        if (clanId2 == null) return false;
+
+        return clanId1.equals(this.getClanId(player2));
     }
 }

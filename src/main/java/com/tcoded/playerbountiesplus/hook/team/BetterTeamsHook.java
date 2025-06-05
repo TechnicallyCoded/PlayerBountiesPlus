@@ -13,6 +13,9 @@ public class BetterTeamsHook extends AbstractTeamHook {
 
     @Override
     public boolean isFriendly(Player player1, Player player2) {
+        if (Team.getTeam(player1) == null) return false;
+        if (Team.getTeam(player2) == null) return false;
+
         return Team.getTeam(player1) == Team.getTeam(player2);
     }
 

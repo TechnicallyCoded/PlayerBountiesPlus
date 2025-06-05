@@ -5,6 +5,8 @@ import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import java.util.UUID;
+
 public class AlessioPartiesHook extends AbstractTeamHook {
 
     public AlessioPartiesHook(PlayerBountiesPlus plugin, Plugin partiesPlugin) {
@@ -13,6 +15,12 @@ public class AlessioPartiesHook extends AbstractTeamHook {
 
     @Override
     public boolean isFriendly(Player player1, Player player2) {
-        return Parties.getApi().areInTheSameParty(player1.getUniqueId(), player2.getUniqueId());
+        UUID uuid1 = player1.getUniqueId();
+        UUID uuid2 = player2.getUniqueId();
+
+        if (!Parties.getApi().isPlayerInParty(uuid1)) return false;
+        if (!Parties.getApi().isPlayerInParty(uuid2)) return false;
+
+        return Parties.getApi().areInTheSameParty(uuid1, uuid2);
     }
 }

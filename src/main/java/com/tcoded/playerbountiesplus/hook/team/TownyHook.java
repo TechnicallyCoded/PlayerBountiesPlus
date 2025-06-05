@@ -23,11 +23,14 @@ public class TownyHook extends AbstractTeamHook {
 
     @Override
     public boolean isFriendly(Player player1, Player player2) {
-        Town town = getTown(player1);
-        Nation player1Nation = getNation(player1);
-        Nation player2Nation = getNation(player2);
-        boolean sameTown = town != null && town.hasResident(player2);
-        boolean sameNation = player1Nation != null && player1Nation.equals(player2Nation);
+        Town town1 = getTown(player1);
+        Town town2 = getTown(player2);
+
+        Nation nation1 = getNation(player1);
+        Nation nation2 = getNation(player2);
+
+        boolean sameTown = town1 != null && town2 != null && (town1.hasResident(player2) || town1.hasAlly(town2));
+        boolean sameNation = nation1 != null && nation2 != null && (nation1.equals(nation2) || nation1.hasAlly(nation2));
 
         return sameTown || sameNation;
     }
