@@ -32,3 +32,11 @@ permissions:
         default: true
       playerbountiesplus.command.playerbountiesplus.reload:
         default: op
+      playerbountiesplus.command.playerbountiesplus.bounty.set:
+        default: op
+      playerbountiesplus.command.playerbountiesplus.bounty.add:
+        default: op
+      playerbountiesplus.command.playerbountiesplus.bounty.remove:
+        default: op
+      playerbountiesplus.command.playerbountiesplus.bounty.delete:
+        default: op

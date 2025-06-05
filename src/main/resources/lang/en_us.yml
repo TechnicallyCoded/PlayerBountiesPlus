@@ -10,6 +10,26 @@ command:
       reloaded: "&aSuccessfully reloaded the configuration files!"
     version:
       no-permission: "&7(Version not visible: Missing permission)"
+    bounty:
+      set:
+        missing-args: "&cUsage: /pbp bounty set <player> <amount>"
+        amount-nan: "&cThat's not a valid number!"
+        player-not-found: "&cThat player is not online or doesn't exist!"
+        success: "&aSet {target}'s bounty to {bounty}."
+      add:
+        missing-args: "&cUsage: /pbp bounty add <player> <amount>"
+        amount-nan: "&cThat's not a valid number!"
+        player-not-found: "&cThat player is not online or doesn't exist!"
+        success: "&aAdded {amount} bounty to {target}. Total: {total}."
+      remove:
+        missing-args: "&cUsage: /pbp bounty remove <player> <amount>"
+        amount-nan: "&cThat's not a valid number!"
+        player-not-found: "&cThat player is not online or doesn't exist!"
+        success: "&aRemoved {amount} bounty from {target}. Total: {total}."
+      delete:
+        missing-args: "&cUsage: /pbp bounty delete <player>"
+        player-not-found: "&cThat player is not online or doesn't exist!"
+        success: "&aDeleted bounty for {target}."
   bounty:
     no-action: "&cYou need to specify an action! /bounty <set/top/check>"
     invalid-action: "&cThat's not a valid action!"
