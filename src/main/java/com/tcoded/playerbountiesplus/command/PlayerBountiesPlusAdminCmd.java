@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter {
-    private static final ArrayList<String> completions = Lists.newArrayList("reload", "version", "bounty", "help");
+    private static final ArrayList<String> completions = Lists.newArrayList("reload", "version", "admin", "help");
 
     private final PlayerBountiesPlus plugin;
 
@@ -41,7 +41,7 @@ public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter
                 return PlayerBountiesPlusReloadCmd.handleCmd(plugin, sender, command, label, args);
             case "version":
                 return PlayerBountiesPlusVersionCmd.handleCmd(plugin, sender, command, label, args);
-            case "bounty":
+            case "admin":
                 return AdminBountyCmd.handleCmd(plugin, sender, command, label, args);
             default:
                 sendHelpMsg(sender);
