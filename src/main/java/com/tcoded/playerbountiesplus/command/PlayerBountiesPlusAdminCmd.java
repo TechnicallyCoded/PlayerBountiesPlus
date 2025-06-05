@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import com.tcoded.playerbountiesplus.command.admin.PlayerBountiesPlusReloadCmd;
 import com.tcoded.playerbountiesplus.command.admin.PlayerBountiesPlusVersionCmd;
+import com.tcoded.playerbountiesplus.command.admin.bounty.AdminBountyCmd;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter {
-    private static final ArrayList<String> completions = Lists.newArrayList("reload", "version", "help");
+    private static final ArrayList<String> completions = Lists.newArrayList("reload", "version", "admin", "help");
 
     private final PlayerBountiesPlus plugin;
 
@@ -40,6 +41,8 @@ public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter
                 return PlayerBountiesPlusReloadCmd.handleCmd(plugin, sender, command, label, args);
             case "version":
                 return PlayerBountiesPlusVersionCmd.handleCmd(plugin, sender, command, label, args);
+            case "admin":
+                return AdminBountyCmd.handleCmd(plugin, sender, command, label, args);
             default:
                 sendHelpMsg(sender);
                 return true;
@@ -52,6 +55,10 @@ public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter
                         "&fAdmin Commands:\n" +
                         "&f/pbp reload &7- Reload the configuration file and the messages.\n" +
                         "&f/pbp version &7- Check the version of the plugin.\n" +
+                        "&f/pbp bounty set <player> <amount> &7- Set a player's bounty.\n" +
+                        "&f/pbp bounty add <player> <amount> &7- Add to a player's bounty.\n" +
+                        "&f/pbp bounty remove <player> <amount> &7- Remove from a player's bounty.\n" +
+                        "&f/pbp bounty delete <player> &7- Delete a player's bounty.\n" +
                         "&f/pbp help &7- Get this message."
         ));
     }
