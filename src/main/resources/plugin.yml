@@ -21,22 +21,18 @@ commands:
     permission: playerbountiesplus.command.bounty
     aliases: [bounties, prime, primes]
   playerbountiesplusadmin:
+    permission: playerbountiesplus.command.admin
     aliases: [playerbountiesplus, pbpa, pbp]
 
 permissions:
   playerbountiesplus.command.bounty:
     default: true
-  playerbountiesplus.command.playerbountiesplus:
+  playerbountiesplus.command.admin:
+    default: op
     children:
-      playerbountiesplus.command.playerbountiesplus.version:
-        default: true
-      playerbountiesplus.command.playerbountiesplus.reload:
-        default: op
-      playerbountiesplus.command.playerbountiesplus.admin.set:
-        default: op
-      playerbountiesplus.command.playerbountiesplus.admin.add:
-        default: op
-      playerbountiesplus.command.playerbountiesplus.admin.remove:
-        default: op
-      playerbountiesplus.command.playerbountiesplus.admin.delete:
-        default: op
+      playerbountiesplus.command.admin.version: {}
+      playerbountiesplus.command.admin.reload: {}
+      playerbountiesplus.command.admin.bounty.set: {}
+      playerbountiesplus.command.admin.bounty.add: {}
+      playerbountiesplus.command.admin.bounty.remove: {}
+      playerbountiesplus.command.admin.bounty.delete: {}
