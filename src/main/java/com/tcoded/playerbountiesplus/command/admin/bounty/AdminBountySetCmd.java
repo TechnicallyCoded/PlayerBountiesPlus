@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class AdminBountySetCmd {
 
-    private static final String PERMISSION = "playerbountiesplus.command.playerbountiesplus.admin.set";
+    private static final String PERMISSION = "playerbountiesplus.command.admin.bounty.set";
 
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String label, String[] args) {
         if (!sender.hasPermission(PERMISSION)) {
