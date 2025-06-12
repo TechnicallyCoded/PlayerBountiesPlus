@@ -22,6 +22,8 @@ public class AdminBountyCmd {
                 return AdminBountyRemoveCmd.handleCmd(plugin, sender, cmd, label, args);
             case "delete":
                 return AdminBountyDeleteCmd.handleCmd(plugin, sender, cmd, label, args);
+            case "get":
+                return AdminBountyGetCmd.handleCmd(plugin, sender, cmd, label, args);
             default:
                 sender.sendMessage(plugin.getLang().getColored("command.bounty.invalid-action"));
                 return true;
