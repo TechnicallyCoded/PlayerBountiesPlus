@@ -4,6 +4,10 @@ import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class AdminBountyCmd {
 
     public static boolean handleCmd(PlayerBountiesPlus plugin, CommandSender sender, Command cmd, String label, String[] args) {
@@ -28,5 +32,12 @@ public class AdminBountyCmd {
                 sender.sendMessage(plugin.getLang().getColored("command.bounty.invalid-action"));
                 return true;
         }
+    }
+
+    public static List<String> onTabComplete(CommandSender sender, String[] args) {
+        if (args.length == 2) {
+            return Arrays.asList("set", "add", "remove", "delete", "get");
+        }
+        return Collections.emptyList();
     }
 }

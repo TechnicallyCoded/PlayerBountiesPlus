@@ -3,8 +3,14 @@ package com.tcoded.playerbountiesplus.command.admin;
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class PlayerBountiesPlusReloadCmd {
+import java.util.Collections;
+import java.util.List;
+
+public class PlayerBountiesPlusReloadCmd implements TabCompleter {
 
     private static final String RELOAD_PERMISSION = "playerbountiesplus.command.playerbountiesplus.reload";
 
@@ -28,4 +34,10 @@ public class PlayerBountiesPlusReloadCmd {
         return true;
     }
 
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        // No additional arguments for reload command
+        return Collections.emptyList();
+    }
 }

@@ -6,6 +6,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
+import java.util.Collections;
+import java.util.List;
+
 public class PlayerBountiesPlusVersionCmd {
 
     private static final String VERSION_PERMISSION = "playerbountiesplus.command.playerbountiesplus.version";
@@ -31,4 +34,8 @@ public class PlayerBountiesPlusVersionCmd {
         return true;
     }
 
+    public static List<String> onTabComplete(CommandSender sender, String[] args) {
+        // No sub-commands for version, return empty list
+        return Collections.emptyList();
+    }
 }

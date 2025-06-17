@@ -1,5 +1,6 @@
 package com.tcoded.playerbountiesplus.command;
 
+import com.google.common.collect.Lists;
 import com.tcoded.playerbountiesplus.PlayerBountiesPlus;
 import com.tcoded.playerbountiesplus.command.bounty.BountyCheckCmd;
 import com.tcoded.playerbountiesplus.command.bounty.BountySetCmd;
@@ -8,12 +9,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BountyCommand implements CommandExecutor, TabCompleter {
 
@@ -51,35 +52,27 @@ public class BountyCommand implements CommandExecutor, TabCompleter {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        @Nullable List<String> options = new ArrayList<>();
-
-        if (args.length < 2) {
-            String arg0 = args[0].toLowerCase();
-            String[] actions = {"set", "top", "check"};
-            for (String action : actions) {
-                if (action.startsWith(arg0)) {
-                    options.add(action);
-                }
+        if (args.length == 1) {
+            return Lists.newArrayList("set", "top", "check").stream()
+                    .filter(action -> action.startsWith(args[0].toLowerCase()))
+                    .collect(Collectors.toList());
+        } else if (args.length > 1) {
+            String subCommand = args[0].toLowerCase();
+            switch (subCommand) {
+                case "set":
+                    return BountySetCmd.onTabComplete(sender, args).stream()
+                            .filter(suggestion -> suggestion.toLowerCase().startsWith(args[1].toLowerCase()))
+                            .collect(Collectors.toList());
+                case "check":
+                    return BountyCheckCmd.onTabComplete(sender, args).stream()
+                            .filter(suggestion -> suggestion.toLowerCase().startsWith(args[1].toLowerCase()))
+                            .collect(Collectors.toList());
+                case "top":
+                    return Collections.emptyList(); // No additional arguments for top
+                default:
+                    return Collections.emptyList();
             }
         }
-        else if (args.length == 2) {
-            String arg0 = args[0].toLowerCase();
-            String arg1 = args[1].toLowerCase();
-            if (arg0.equals("set") || arg0.equals("check")) {
-                this.plugin.getServer().getOnlinePlayers().stream()
-                        .map(Player::getName)
-                        .filter(name -> name.toLowerCase().startsWith(arg1))
-                        .forEach(options::add);
-            }
-        }
-        else if (args.length == 3) {
-            String arg0 = args[0].toLowerCase();
-            String arg2 = args[2].toLowerCase();
-            if (arg0.equals("set")) {
-                if (arg2.equals("")) options.add("<amount>");
-            }
-        }
-
-        return options;
+        return Collections.emptyList();
     }
 }

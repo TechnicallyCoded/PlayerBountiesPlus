@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,8 +67,24 @@ public class PlayerBountiesPlusAdminCmd implements CommandExecutor, TabCompleter
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        return completions.stream()
-                .filter(s -> s.startsWith(args[0].toLowerCase()))
-                .collect(Collectors.toList());
+        if (args.length == 1) {
+            return completions.stream()
+                    .filter(s -> s.toLowerCase().startsWith(args[0].toLowerCase()))
+                    .collect(Collectors.toList());
+        } else if (args.length > 1) {
+            String subCommand = args[0].toLowerCase();
+            switch (subCommand) {
+                case "bounty":
+                    return AdminBountyCmd.onTabComplete(sender, args);
+                case "version":
+                    return PlayerBountiesPlusVersionCmd.onTabComplete(sender, args);
+                case "reload":
+                case "help":
+                    return Collections.emptyList(); // No additional arguments for reload or help
+                default:
+                    return Collections.emptyList();
+            }
+        }
+        return Collections.emptyList();
     }
 }

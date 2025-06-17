@@ -6,8 +6,13 @@ import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class BountySetCmd {
 
@@ -119,5 +124,20 @@ public class BountySetCmd {
         bountyDataManager.saveBountiesAsync();
 
         return true;
+    }
+
+    @Nullable
+    public static List<String> onTabComplete(@NotNull CommandSender sender, @NotNull String[] args) {
+        if (args.length == 2) {
+            // Suggest online player names for the username
+            return sender.getServer().getOnlinePlayers().stream()
+                    .map(Player::getName)
+                    .filter(name -> name.toLowerCase().startsWith(args[1].toLowerCase()))
+                    .collect(Collectors.toList());
+        } else if (args.length == 3) {
+            // Suggest a placeholder for the amount
+            return Collections.singletonList("<amount>");
+        }
+        return Collections.emptyList();
     }
 }

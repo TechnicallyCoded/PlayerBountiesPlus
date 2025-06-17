@@ -5,10 +5,17 @@ import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-public class AdminBountyGetCmd {
+public class AdminBountyGetCmd implements TabCompleter {
 
     private static final String PERMISSION = "playerbountiesplus.command.admin.bounty.get";
 
@@ -43,5 +50,18 @@ public class AdminBountyGetCmd {
                 .replace("{target}", target.getName())
                 .replace("{bounty}", String.valueOf(current)));
         return true;
+    }
+
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (args.length == 3) {
+            // Suggest online player names for the username
+            return sender.getServer().getOnlinePlayers().stream()
+                    .map(Player::getName)
+                    .filter(name -> name.toLowerCase().startsWith(args[2].toLowerCase()))
+                    .collect(Collectors.toList());
+        }
+        return Collections.emptyList();
     }
 }
