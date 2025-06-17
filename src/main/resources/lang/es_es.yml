@@ -7,9 +7,33 @@ command:
   no-permission-detailed: "{no-permission-msg} &7({permission})"
   admin:
     reload:
-      reloaded: "&aLos archivos de configuración se han recargado con éxito."
+      reloaded: "&a¡Archivos de configuración recargados con éxito!"
     version:
-      no-permission: "&7(Versión no visible: Permiso faltante)"
+      no-permission: "&7(Versión no visible: Falta permiso)"
+    bounty:
+      set:
+        missing-args: "&cUso: /pbp bounty set <jugador> <cantidad>"
+        amount-nan: "&c¡Ese no es un número válido!"
+        player-not-found: "&c¡Ese jugador no está en línea o no existe!"
+        success: "&aSe ha establecido la recompensa de {target} en {bounty}."
+      add:
+        missing-args: "&cUso: /pbp bounty add <jugador> <cantidad>"
+        amount-nan: "&c¡Ese no es un número válido!"
+        player-not-found: "&c¡Ese jugador no está en línea o no existe!"
+        success: "&aSe ha añadido una recompensa de {amount} a {target}. Total: {total}."
+      remove:
+        missing-args: "&cUso: /pbp bounty remove <jugador> <cantidad>"
+        amount-nan: "&c¡Ese no es un número válido!"
+        player-not-found: "&c¡Ese jugador no está en línea o no existe!"
+        success: "&aSe ha eliminado una recompensa de {amount} de {target}. Total: {total}."
+      delete:
+        missing-args: "&cUso: /pbp bounty delete <jugador>"
+        player-not-found: "&c¡Ese jugador no está en línea o no existe!"
+        success: "&aRecompensa eliminada para {target}."
+      get:
+        missing-args: "&cUso: /pbp bounty get <jugador>"
+        player-not-found: "&c¡Ese jugador no está en línea o no existe!"
+        success: "&a{target} actualmente tiene una recompensa de {bounty}."
   bounty:
     no-action: "&cDebes especificar una acción! /bounty <set/top/check>"
     invalid-action: "&cEsa no es una acción válida."

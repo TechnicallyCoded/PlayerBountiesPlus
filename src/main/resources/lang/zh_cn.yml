@@ -10,6 +10,30 @@ command:
       reloaded: "&a成功重新加载配置文件！"
     version:
       no-permission: "&7（无法查看版本：缺少权限）"
+    bounty:
+      set:
+        missing-args: "&c用法：/pbp bounty set <玩家> <金额>"
+        amount-nan: "&c这不是一个有效的数字！"
+        player-not-found: "&c该玩家不在线或不存在！"
+        success: "&a已将 {target} 的悬赏设置为 {bounty}。"
+      add:
+        missing-args: "&c用法：/pbp bounty add <玩家> <金额>"
+        amount-nan: "&c这不是一个有效的数字！"
+        player-not-found: "&c该玩家不在线或不存在！"
+        success: "&a已为 {target} 增加了 {amount} 悬赏。总计：{total}。"
+      remove:
+        missing-args: "&c用法：/pbp bounty remove <玩家> <金额>"
+        amount-nan: "&c这不是一个有效的数字！"
+        player-not-found: "&c该玩家不在线或不存在！"
+        success: "&a已为 {target} 移除了 {amount} 悬赏。总计：{total}。"
+      delete:
+        missing-args: "&c用法：/pbp bounty delete <玩家>"
+        player-not-found: "&c该玩家不在线或不存在！"
+        success: "&a已删除 {target} 的悬赏。"
+      get:
+        missing-args: "&c用法：/pbp bounty get <玩家>"
+        player-not-found: "&c该玩家不在线或不存在！"
+        success: "&a{target} 当前有一个悬赏，金额为 {bounty}。"
   bounty:
     no-action: "&c你需要指定一个操作！/bounty <set/top/check>"
     invalid-action: "&c这不是一个有效的操作！"
@@ -32,3 +56,4 @@ command:
     top:
       top-10: "&e前10名悬赏："
       no-bounties: "&r &c没有设置悬赏！"
+

@@ -10,6 +10,30 @@ command:
       reloaded: "&aKonfigurationsfilerna har laddats om framgångsrikt!"
     version:
       no-permission: "&7(Version ej synlig: Saknad behörighet)"
+    bounty:
+      set:
+        missing-args: "&cAnvändning: /pbp bounty set <spelare> <summa>"
+        amount-nan: "&cDet är inte ett giltigt nummer!"
+        player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+        success: "&aPrissumman för {target} har satts till {bounty}."
+      add:
+        missing-args: "&cAnvändning: /pbp bounty add <spelare> <summa>"
+        amount-nan: "&cDet är inte ett giltigt nummer!"
+        player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+        success: "&aLade till {amount} i prissumma för {target}. Totalt: {total}."
+      remove:
+        missing-args: "&cAnvändning: /pbp bounty remove <spelare> <summa>"
+        amount-nan: "&cDet är inte ett giltigt nummer!"
+        player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+        success: "&aTog bort {amount} från prissumman för {target}. Totalt: {total}."
+      delete:
+        missing-args: "&cAnvändning: /pbp bounty delete <spelare>"
+        player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+        success: "&aPrissumman för {target} har tagits bort."
+      get:
+        missing-args: "&cAnvändning: /pbp bounty get <spelare>"
+        player-not-found: "&cDen spelaren är inte online eller existerar inte!"
+        success: "&a{target} har för närvarande en prissumma på {bounty}."
   bounty:
     no-action: "&cDu måste ange en åtgärd! /bounty <set/top/check>"
     invalid-action: "&cDet är inte en giltig åtgärd!"

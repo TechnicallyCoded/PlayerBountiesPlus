@@ -10,6 +10,30 @@ command:
       reloaded: "&aLes fichiers de configuration ont été mis à jour avec succès!"
     version:
       no-permission: "&7(Version non visible: Permission manquante)"
+    bounty:
+      set:
+        missing-args: "&cUtilisation : /pbp bounty set <joueur> <montant>"
+        amount-nan: "&cCe n'est pas un nombre valide !"
+        player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+        success: "&aPrime de {target} définie à {bounty}."
+      add:
+        missing-args: "&cUtilisation : /pbp bounty add <joueur> <montant>"
+        amount-nan: "&cCe n'est pas un nombre valide !"
+        player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+        success: "&aAjouté {amount} de prime à {target}. Total : {total}."
+      remove:
+        missing-args: "&cUtilisation : /pbp bounty remove <joueur> <montant>"
+        amount-nan: "&cCe n'est pas un nombre valide !"
+        player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+        success: "&aRetiré {amount} de la prime de {target}. Total : {total}."
+      delete:
+        missing-args: "&cUtilisation : /pbp bounty delete <joueur>"
+        player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+        success: "&aPrime supprimée pour {target}."
+      get:
+        missing-args: "&cUtilisation : /pbp bounty get <joueur>"
+        player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+        success: "&a{target} a actuellement une prime de {bounty}."
   bounty:
     no-action: "&cVous devez spécifier une action! /bounty <set/top/check>"
     invalid-action: "&cCeci n'est pas une action valable!"
@@ -24,6 +48,20 @@ command:
       success: "&cVous avez placé une prime de {bounty} sur la tête de {target}!"
       announce: "\nUne prime de {bounty} a été placée sur la tête de {target} par {player}!{extra}\n"
       announce-extra: " (Total: {total})"
+    add:
+      missing-args: "&cUtilisation : /pbp bounty add <joueur> <montant>"
+      amount-nan: "&cCe n'est pas un nombre valide !"
+      player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+      success: "&aAjouté {amount} de prime à {target}. Total : {total}."
+    remove:
+      missing-args: "&cUtilisation : /pbp bounty remove <joueur> <montant>"
+      amount-nan: "&cCe n'est pas un nombre valide !"
+      player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+      success: "&aRetiré {amount} de la prime de {target}. Total : {total}."
+    delete:
+      missing-args: "&cUtilisation : /pbp bounty delete <joueur>"
+      player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas !"
+      success: "&aPrime supprimée pour {target}."
     check:
       no-player-specified: "&cVous devez spécifier un joueur! /bounty check <player>"
       player-not-found: "&cCe joueur n'est pas en ligne ou n'existe pas"

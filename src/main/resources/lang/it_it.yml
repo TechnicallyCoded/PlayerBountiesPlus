@@ -10,6 +10,30 @@ command:
       reloaded: "&aHai ricaricato con successo i file di configurazione!"
     version:
       no-permission: "&7(Versione non visibile: Permesso mancante)"
+    bounty:
+      set:
+        missing-args: "&cUso: /pbp bounty set <giocatore> <quantità>"
+        amount-nan: "&cQuesto non è un numero valido!"
+        player-not-found: "&cQuesto giocatore non è online o non esiste!"
+        success: "&aTaglia di {bounty} impostata per {target}."
+      add:
+        missing-args: "&cUso: /pbp bounty add <giocatore> <quantità>"
+        amount-nan: "&cQuesto non è un numero valido!"
+        player-not-found: "&cQuesto giocatore non è online o non esiste!"
+        success: "&aAggiunta una taglia di {amount} a {target}. Totale: {total}."
+      remove:
+        missing-args: "&cUso: /pbp bounty remove <giocatore> <quantità>"
+        amount-nan: "&cQuesto non è un numero valido!"
+        player-not-found: "&cQuesto giocatore non è online o non esiste!"
+        success: "&aRimossa una taglia di {amount} da {target}. Totale: {total}."
+      delete:
+        missing-args: "&cUso: /pbp bounty delete <giocatore>"
+        player-not-found: "&cQuesto giocatore non è online o non esiste!"
+        success: "&aTaglia eliminata per {target}."
+      get:
+        missing-args: "&cUso: /pbp bounty get <giocatore>"
+        player-not-found: "&cQuesto giocatore non è online o non esiste!"
+        success: "&a{target} ha attualmente una taglia di {bounty}."
   bounty:
     no-action: "&cDevi specificare un'azione! /bounty <set/top/check>"
     invalid-action: "&cQuesta non è un'azione valida!"

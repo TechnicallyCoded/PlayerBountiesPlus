@@ -10,6 +10,30 @@ command:
       reloaded: "&aКонфигурационные файлы успешно перезагружены!"
     version:
       no-permission: "&7(Версия не видна: Отсутствует разрешение)"
+    bounty:
+      set:
+        missing-args: "&cИспользование: /pbp bounty set <игрок> <сумма>"
+        amount-nan: "&cЭто не число!"
+        player-not-found: "&cЭтот игрок не в сети или не существует!"
+        success: "&aНаграда {target} установлена на {bounty}."
+      add:
+        missing-args: "&cИспользование: /pbp bounty add <игрок> <сумма>"
+        amount-nan: "&cЭто не число!"
+        player-not-found: "&cЭтот игрок не в сети или не существует!"
+        success: "&aДобавлено {amount} к награде {target}. Всего: {total}."
+      remove:
+        missing-args: "&cИспользование: /pbp bounty remove <игрок> <сумма>"
+        amount-nan: "&cЭто не число!"
+        player-not-found: "&cЭтот игрок не в сети или не существует!"
+        success: "&aУдалено {amount} из награды {target}. Всего: {total}."
+      delete:
+        missing-args: "&cИспользование: /pbp bounty delete <игрок>"
+        player-not-found: "&cЭтот игрок не в сети или не существует!"
+        success: "&aНаграда для {target} удалена."
+      get:
+        missing-args: "&cИспользование: /pbp bounty get <игрок>"
+        player-not-found: "&cЭтот игрок не в сети или не существует!"
+        success: "&aУ {target} сейчас награда {bounty}."
   bounty:
     no-action: "&cВы должны указать действие! /bounty <set/top/check>"
     invalid-action: "&cЭто недопустимое действие!"

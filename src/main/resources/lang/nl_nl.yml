@@ -7,9 +7,33 @@ command:
   no-permission-detailed: "{no-permission-msg} &7({permission})"
   admin:
     reload:
-      reloaded: "&aDe configuratiebestanden zijn succesvol herladen!"
+      reloaded: "&aConfiguratiebestanden succesvol herladen!"
     version:
-      no-permission: "&7(Versie niet zichtbaar: Ontbrekende toestemming)"
+      no-permission: "&7(Versie niet zichtbaar: Ontbrekend recht)"
+    bounty:
+      set:
+        missing-args: "&cGebruik: /pbp bounty set <speler> <bedrag>"
+        amount-nan: "&cDat is geen geldig getal!"
+        player-not-found: "&cDie speler is niet online of bestaat niet!"
+        success: "&aDe premie van {target} is ingesteld op {bounty}."
+      add:
+        missing-args: "&cGebruik: /pbp bounty add <speler> <bedrag>"
+        amount-nan: "&cDat is geen geldig getal!"
+        player-not-found: "&cDie speler is niet online of bestaat niet!"
+        success: "&a{amount} premie toegevoegd aan {target}. Totaal: {total}."
+      remove:
+        missing-args: "&cGebruik: /pbp bounty remove <speler> <bedrag>"
+        amount-nan: "&cDat is geen geldig getal!"
+        player-not-found: "&cDie speler is niet online of bestaat niet!"
+        success: "&a{amount} premie verwijderd van {target}. Totaal: {total}."
+      delete:
+        missing-args: "&cGebruik: /pbp bounty delete <speler>"
+        player-not-found: "&cDie speler is niet online of bestaat niet!"
+        success: "&aPremie verwijderd voor {target}."
+      get:
+        missing-args: "&cGebruik: /pbp bounty get <speler>"
+        player-not-found: "&cDie speler is niet online of bestaat niet!"
+        success: "&a{target} heeft momenteel een premie van {bounty}."
   bounty:
     no-action: "&cJe moet een actie specificeren! /beloning <zet/hoogte/controle>"
     invalid-action: "&cDit is geen geldige actie!"

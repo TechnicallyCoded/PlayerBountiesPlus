@@ -10,6 +10,30 @@ command:
       reloaded: "&aDie Konfigurationsdateien wurden erfolgreich neu geladen!"
     version:
       no-permission: "&7(Version nicht sichtbar: Fehlende Berechtigung)"
+    bounty:
+      set:
+        missing-args: "&cBenutzung: /pbp bounty set <Spieler> <Betrag>"
+        amount-nan: "&cDas ist keine gültige Zahl!"
+        player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+        success: "&aBelohnung für {target} auf {bounty} gesetzt."
+      add:
+        missing-args: "&cBenutzung: /pbp bounty add <Spieler> <Betrag>"
+        amount-nan: "&cDas ist keine gültige Zahl!"
+        player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+        success: "&a{amount} zur Belohnung von {target} hinzugefügt. Gesamt: {total}."
+      remove:
+        missing-args: "&cBenutzung: /pbp bounty remove <Spieler> <Betrag>"
+        amount-nan: "&cDas ist keine gültige Zahl!"
+        player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+        success: "&a{amount} von der Belohnung von {target} entfernt. Gesamt: {total}."
+      delete:
+        missing-args: "&cBenutzung: /pbp bounty delete <Spieler>"
+        player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+        success: "&aBelohnung für {target} gelöscht."
+      get:
+        missing-args: "&cBenutzung: /pbp bounty get <Spieler>"
+        player-not-found: "&cDieser Spieler ist nicht online oder existiert nicht!"
+        success: "&a{target} hat derzeit eine Belohnung von {bounty}."
   bounty:
     no-action: "&cDu musst eine Aktion angeben! /bounty <set/top/check>"
     invalid-action: "&cDas ist keine gültige Aktion!"
