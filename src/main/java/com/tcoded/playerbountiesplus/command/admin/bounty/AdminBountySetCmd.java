@@ -5,7 +5,6 @@ import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class AdminBountySetCmd implements TabCompleter {
+public class AdminBountySetCmd {
 
     private static final String PERMISSION = "playerbountiesplus.command.admin.bounty.set";
 
@@ -60,13 +59,11 @@ public class AdminBountySetCmd implements TabCompleter {
     }
 
     @Nullable
-    @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public static List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 3) {
-            // Suggest online player names for the username
+            // Suggest all online player names for the username
             return sender.getServer().getOnlinePlayers().stream()
                     .map(player -> player.getName())
-                    .filter(name -> name.toLowerCase().startsWith(args[2].toLowerCase()))
                     .collect(Collectors.toList());
         } else if (args.length == 4) {
             // Suggest a placeholder for the amount

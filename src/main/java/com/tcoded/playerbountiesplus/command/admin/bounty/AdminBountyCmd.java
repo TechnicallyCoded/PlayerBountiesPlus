@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminBountyCmd {
 
@@ -35,9 +36,34 @@ public class AdminBountyCmd {
     }
 
     public static List<String> onTabComplete(CommandSender sender, String[] args) {
+        List<String> suggestions = Collections.emptyList();
+
         if (args.length == 2) {
-            return Arrays.asList("set", "add", "remove", "delete", "get");
+            suggestions = Arrays.asList("set", "add", "remove", "delete", "get");
+        } else if (args.length > 2) {
+            String sub = args[1].toLowerCase();
+            switch (sub) {
+                case "add":
+                    suggestions = AdminBountyAddCmd.onTabComplete(sender, null, null, args);
+                    break;
+                case "remove":
+                    suggestions = AdminBountyRemoveCmd.onTabComplete(sender, null, null, args);
+                    break;
+                case "delete":
+                    suggestions = AdminBountyDeleteCmd.onTabComplete(sender, null, null, args);
+                    break;
+                case "get":
+                    suggestions = AdminBountyGetCmd.onTabComplete(sender, null, null, args);
+                    break;
+                case "set":
+                    suggestions = AdminBountySetCmd.onTabComplete(sender, null, null, args);
+                    break;
+            }
         }
-        return Collections.emptyList();
+
+        String input = args[args.length - 1].toLowerCase();
+        return suggestions.stream()
+                .filter(opt -> opt.toLowerCase().startsWith(input))
+                .collect(Collectors.toList());
     }
 }
