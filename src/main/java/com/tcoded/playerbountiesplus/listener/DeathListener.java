@@ -26,6 +26,11 @@ public class DeathListener implements Listener {
         Player killer = victim.getKiller();
 
         if (killer != null) {
+            if (!killer.hasPermission("playerbountiesplus.event.claim")) {
+                killer.sendMessage(plugin.getLang().getColored("death.no-permission"));
+                return;
+            }
+
             BountyDataManager bountyDataManager = this.plugin.getBountyDataManager();
             UUID victimId = victim.getUniqueId();
 

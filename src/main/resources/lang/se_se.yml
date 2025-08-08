@@ -1,6 +1,7 @@
 death:
   same-team: "&aDen spelare du dödade har en aktiv prissumma, men du tillhör samma lag som de är!"
   announce-claimed: "&4&l{killer} har tagit {victim}s prissumma värd {bounty} dollar"
+  no-permission: "&cDu får inte hämta in prissummor!"
 
 command:
   no-permission: "&cDu har inte behörighet att använda detta kommando!"

@@ -1,6 +1,7 @@
 death:
   same-team: "&a你击杀的玩家有悬赏，但你与他们在同一队伍中！"
   announce-claimed: "&4&l{killer} 已领取 {victim} 的悬赏，价值 ${bounty}"
+  no-permission: "&c你没有权限领取悬赏！"
 
 command:
   no-permission: "&c你没有权限使用此命令！"

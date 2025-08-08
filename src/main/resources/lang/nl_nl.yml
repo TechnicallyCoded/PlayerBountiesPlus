@@ -1,6 +1,7 @@
 death:
   same-team: "&aDe speler die je hebt gedood heeft een actieve beloning, maar je zit in hetzelfde team als zij!"
   announce-claimed: "&4&l{killer} heeft de beloning van {victim} ter waarde van ${bounty} geclaimd"
+  no-permission: "&cU mag geen premies claimen!"
 
 command:
   no-permission: "&cJe hebt geen toestemming om deze opdracht te gebruiken!"

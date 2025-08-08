@@ -5,6 +5,7 @@
 death:
   same-team: "&aA játékos, akit megöltél, aktív fejpénzt volt a fején, de ugyanabba a csapatba tartozol, mint ő!"
   announce-claimed: "&4&l{killer} behajtotta {victim} fejpénzét és megkapta jutalmát aminek értéke: ${bounty}"
+  no-permission: "&cNem igényelheted a fejpénzeket!"
 
 command:
   no-permission: "&cNincs jogosultságod ennek a parancsnak a használatához!"

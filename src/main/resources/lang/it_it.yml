@@ -1,6 +1,7 @@
 death:
   same-team: "&aIl giocatore che hai ucciso ha una taglia attiva, ma sei nella stessa squadra!"
   announce-claimed: "&4&l{killer} ha reclamato la taglia di {victim} del valore di ${bounty}"
+  no-permission: "&cNon ti è permesso riscuotere le taglie!"
 
 command:
   no-permission: "&cNon hai il permesso di utilizzare questo comando!"
