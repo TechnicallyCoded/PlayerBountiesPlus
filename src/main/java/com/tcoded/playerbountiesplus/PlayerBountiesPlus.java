@@ -12,6 +12,7 @@ import com.tcoded.playerbountiesplus.hook.placeholder.PlaceholderHook;
 import com.tcoded.playerbountiesplus.hook.team.AbstractTeamHook;
 import com.tcoded.playerbountiesplus.hook.team.TeamHook;
 import com.tcoded.playerbountiesplus.listener.DeathListener;
+import com.tcoded.playerbountiesplus.listener.GuiListener;
 import com.tcoded.playerbountiesplus.manager.BountyDataManager;
 import com.tcoded.playerbountiesplus.util.LangUtil;
 import org.bstats.bukkit.Metrics;
@@ -95,8 +96,9 @@ public final class PlayerBountiesPlus extends JavaPlugin {
             adminCmd.setTabCompleter(adminExec);
         }
 
-        // Listener
+        // Listeners
         this.getServer().getPluginManager().registerEvents(new DeathListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new GuiListener(), this);
 
         // Update checker
         checkUpdate();
