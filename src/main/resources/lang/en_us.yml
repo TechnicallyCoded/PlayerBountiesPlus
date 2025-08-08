@@ -57,3 +57,8 @@ command:
     top:
       top-10: "&eTop 10 bounties:"
       no-bounties: "&r &cNo bounties were set!"
+
+gui:
+  main:
+    title: "&eBounties"
+
