@@ -53,6 +53,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion implements Placehol
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
         if (params.equals("bounty")) {
             return String.valueOf(pbpPlugin.getBountyDataManager().getBounty(player.getUniqueId()));
+        } else if (params.equals("hasbounty")) {
+            return String.valueOf(pbpPlugin.getBountyDataManager().hasBounty(player.getUniqueId()));
         }
 
         return "INVALID-OPTION";
