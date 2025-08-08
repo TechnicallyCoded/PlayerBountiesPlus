@@ -1,6 +1,7 @@
 death:
   same-team: "&aDa pwayer you kiwwed has an active bounty but you awe in da same team as they awe!"
   announce-claimed: "&4&w{killer} cwaimed {victim}'s bounty wowth ${bounty}"
+  no-permission: "&cYou awe nyot awwowed to cwaim bounties!"
 
 command:
   no-permission: "&cYou don't have da pewmission to use this command!"

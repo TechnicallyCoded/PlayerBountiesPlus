@@ -1,6 +1,7 @@
 death:
   same-team: "&aEl jugador que mataste tiene una recompensa activa pero estás en el mismo equipo que él."
   announce-claimed: "&4&l{killer} reclamó la recompensa de {victim} valorada en ${bounty}"
+  no-permission: "&c¡No se le permite reclamar recompensas!"
 
 command:
   no-permission: "&cNo tienes permiso para usar este comando."

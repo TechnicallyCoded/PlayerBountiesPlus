@@ -22,6 +22,15 @@ public class BountySetCmd {
             return true;
         }
 
+        if (sender instanceof Player && !sender.hasPermission("playerbountiesplus.command.bounty.set")) {
+            String noPerm = plugin.getLang().getColored("command.no-permission");
+            String noPermDetailed = plugin.getLang().getColored("command.no-permission-detailed")
+                    .replace("{no-permission-msg}", noPerm)
+                    .replace("{permission}", "playerbountiesplus.command.bounty.set");
+            sender.sendMessage(noPermDetailed);
+            return true;
+        }
+
         String playerNameArg = args[1];
         float amount;
         try {

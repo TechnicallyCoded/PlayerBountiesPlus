@@ -1,6 +1,7 @@
 death:
   same-team: "&aDer Spieler, den du getötet hast, hat eine aktive Belohnung, aber du bist im selben Team wie er!"
   announce-claimed: "&4&l{killer} hat die Belohnung von {victim} im Wert von ${bounty} beansprucht"
+  no-permission: "&cSie dürfen keine Kopfgelder beanspruchen!"
 
 command:
   no-permission: "&cDu hast keine Berechtigung, diesen Befehl zu verwenden!"
