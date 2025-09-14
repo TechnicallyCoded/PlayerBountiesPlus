@@ -91,6 +91,10 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/releases/</url>
         </repository>
+        <repository>
+            <id>tcoded-public</id>
+            <url>https://repo.tcoded.com/public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -119,10 +123,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.CortezRomeo</groupId>
-            <artifactId>ClansPlus</artifactId>
+            <groupId>com.cortezromeo.clansplus</groupId>
+            <artifactId>clansplus-plugin</artifactId>
             <version>2.8</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.TechnicallyCoded</groupId>
