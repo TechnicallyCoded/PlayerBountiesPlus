@@ -11,6 +11,7 @@ depend:
   - Vault
 softdepend:
   - ClansLite
+  - ClansPlus
   - Parties
   - BetterTeams
   - SimpleClans

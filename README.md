@@ -5,7 +5,7 @@ PlayerBountiesPlus lets players set and claim bounties while blocking teammates 
 
 ## Features
 - Clan-aware bounty system that prevents teammates from claiming each other's bounties
-- Integrates with Vault and supports ClansLite, Parties, BetterTeams, SimpleClans and Towny for team detection
+- Integrates with Vault and supports ClansLite, ClansPlus, Parties, BetterTeams, SimpleClans and Towny for team detection
 - Inventory GUI for viewing bounties
 - PlaceholderAPI support for custom placeholders
 - Localized messages in multiple languages
