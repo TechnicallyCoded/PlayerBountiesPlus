@@ -45,7 +45,13 @@ public interface TeamHook {
         // LlmDl - Towny - https://www.spigotmc.org/resources/towny-advanced.72694/
         Plugin townyPlugin = pluginManager.getPlugin("Towny");
         if (townyPlugin != null && townyPlugin.isEnabled()) {
-            return new TownyHook(plugin, simpleClansPlugin);
+            return new TownyHook(plugin, townyPlugin);
+        }
+
+        // CortezRomeo - ClansPlus - https://github.com/CortezRomeo/ClansPlus
+        Plugin clansPlusPlugin = pluginManager.getPlugin("ClansPlus");
+        if (clansPlusPlugin != null && clansPlusPlugin.isEnabled()) {
+            return new ClansPlusHook(plugin, clansPlusPlugin);
         }
 
         return null;
